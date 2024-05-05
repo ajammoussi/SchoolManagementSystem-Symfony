@@ -2,7 +2,9 @@
 
 namespace App\Repository;
 
+use App\Entity\Course;
 use App\Entity\Student;
+use App\Entity\Teacher;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -14,6 +16,19 @@ class StudentRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Student::class);
+    }
+
+    public function findStudentsByTeacherId(int $teacherId)
+    {
+        $qb = $this->createQueryBuilder('s');
+
+        $qb->select('s', 'CONCAT(\'(\', c.id, \') \',c.coursename) AS enrolledcourse')
+            ->innerJoin(Course::class, 'c', 'WITH', 's.field = c.field AND s.studylevel = c.studylevel')
+            ->innerJoin(Teacher::class, 't', 'WITH', 'c.teacher = t.id')
+            ->where('c.teacher = :teacherId')
+            ->setParameter('teacherId', $teacherId);
+
+        return $qb->getQuery()->getResult();
     }
 
 //    /**

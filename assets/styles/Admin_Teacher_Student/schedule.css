@@ -1,0 +1,20 @@
+.fc-col-header-cell-cushion {
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+.fc-scrollgrid-sync-inner{
+    background-color: #c1c1c1;
+}
+
+.calendar{
+    width: 95%;
+    margin: 50px auto;
+    padding: 10px 40px;
+    background-color: #f5f5f5;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+main{
+    box-shadow: rgba(0, 0, 0, 0.35) 2px 5px 15px ;
+    
+}

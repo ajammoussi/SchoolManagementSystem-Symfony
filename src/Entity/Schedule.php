@@ -13,8 +13,9 @@ class Schedule
     #[ORM\Column]
     private ?int $schedule_id = null;
 
-    #[ORM\Column]
-    private ?int $course_id = null;
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Course $course = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $start_date = null;
@@ -56,14 +57,14 @@ class Schedule
         return $this;
     }
 
-    public function getCourseId(): ?int
+    public function getCourse(): ?Course
     {
-        return $this->course_id;
+        return $this->course;
     }
 
-    public function setCourseId(int $course_id): static
+    public function setCourse(?Course $course): static
     {
-        $this->course_id = $course_id;
+        $this->course = $course;
 
         return $this;
     }
@@ -174,5 +175,22 @@ class Schedule
         $this->studylevel = $studylevel;
 
         return $this;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'schedule_id' => $this->schedule_id,
+            'course_id' => $this->course,
+            'start_date' => $this->start_date,
+            'start_time' => $this->start_time,
+            'end_time' => $this->end_time,
+            'room' => $this->room,
+            'instructor_id' => $this->instructor,
+            'description' => $this->description,
+            'expiry_date' => $this->expiry_date,
+            'field' => $this->field,
+            'studylevel' => $this->studylevel,
+        ];
     }
 }

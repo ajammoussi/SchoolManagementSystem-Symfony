@@ -205,4 +205,23 @@ class Student
 
         return $this;
     }
+
+    public function toArray()
+    {
+        return [
+            'id' => $this->getId(),
+            'firstName' => $this->getFirstName(),
+            'lastName' => $this->getLastName(),
+            'email' => $this->getEmail(),
+            'password' => $this->getPassword(),
+            'phone' => $this->getPhone(),
+            'address' => $this->getAddress(),
+            'birthdate' => $this->getBirthdate(),
+            'gender' => $this->getGender(),
+            'nationality' => $this->getNationality(),
+            'field' => $this->getField(),
+            'studylevel' => $this->getStudylevel(),
+            'class' => $this->getClass(),
+        ];
+    }
 }

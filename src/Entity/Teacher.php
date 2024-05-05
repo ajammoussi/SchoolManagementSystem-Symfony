@@ -114,4 +114,17 @@ class Teacher
 
         return $this;
     }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'firstname' => $this->firstname,
+            'lastname' => $this->lastname,
+            'email' => $this->email,
+            'password' => $this->password,
+            'phone' => $this->phone,
+            'gender' => $this->gender
+        ];
+    }
 }

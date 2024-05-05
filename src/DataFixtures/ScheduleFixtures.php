@@ -3,9 +3,11 @@
 namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\Validator\Constraints\Date;
 
-class ScheduleFixtures extends Fixture
+class ScheduleFixtures extends Fixture implements FixtureGroupInterface
 {
     private array $Schedule=[
         [1, 1,  '2024-04-29' , '09:00:00', '11:00:00', 'Room A', 1, 'Introduction to Programming', '2024-04-22 00:00:00', 'GL', 2],
@@ -35,19 +37,32 @@ class ScheduleFixtures extends Fixture
         foreach ($this->Schedule as $schedule) {
             $scheduleObj = new \App\Entity\Schedule();
             $scheduleObj->setScheduleId($schedule[0]);
-            $scheduleObj->setInstructor($schedule[1]);
-            $scheduleObj->setCourseId($schedule[2]);
-            $scheduleObj->setStartDate($schedule[3]);
-            $scheduleObj->setStartTime($schedule[4]);
-            $scheduleObj->setEndTime($schedule[5]);
-            $scheduleObj->setRoom($schedule[6]);
+            // Fetch the Course entity using the ID
+            $course = $manager->find(\App\Entity\Course::class, $schedule[1]);
+            if ($course !== null) {
+                $scheduleObj->setCourse($course);
+            }
+            $scheduleObj->setStartDate(new \DateTime($schedule[2]));
+            $scheduleObj->setStartTime(\DateTime::createFromFormat('H:i:s', $schedule[3]));
+            $scheduleObj->setEndTime(\DateTime::createFromFormat('H:i:s', $schedule[4]));
+            $scheduleObj->setRoom($schedule[5]);
+            // Fetch the Teacher entity using the ID
+            $instructor = $manager->find(\App\Entity\Teacher::class, $schedule[6]);
+            if ($instructor !== null) {
+                $scheduleObj->setInstructor($instructor);
+            }
             $scheduleObj->setDescription($schedule[7]);
-            $scheduleObj->setExpiryDate($schedule[8]);
+            $scheduleObj->setExpiryDate(new \DateTime($schedule[8]));
             $scheduleObj->setField($schedule[9]);
             $scheduleObj->setStudylevel($schedule[10]);
             $manager->persist($scheduleObj);
         }
 
         $manager->flush();
+    }
+
+    public static function getGroups(): array
+    {
+        return ['group3'];
     }
 }

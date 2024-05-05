@@ -220,4 +220,24 @@ class Request
 
         return $this;
     }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'firstname' => $this->firstname,
+            'lastname' => $this->lastname,
+            'email' => $this->email,
+            'phone' => $this->phone,
+            'address' => $this->address,
+            'birthdate' => $this->birthdate,
+            'gender' => $this->gender,
+            'nationality' => $this->nationality,
+            'field' => $this->field,
+            'education' => $this->education,
+            'program' => $this->program,
+            'achievements' => $this->achievements,
+            'essay' => $this->essay
+        ];
+    }
 }

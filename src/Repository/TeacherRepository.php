@@ -16,6 +16,16 @@ class TeacherRepository extends ServiceEntityRepository
         parent::__construct($registry, Teacher::class);
     }
 
+    public function findTeacherById(int $id): ?Teacher
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
 //    /**
 //     * @return Teacher[] Returns an array of Teacher objects
 //     */
@@ -40,4 +50,8 @@ class TeacherRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    public function findStudentsByTeacherId($id)
+    {
+
+    }
 }
