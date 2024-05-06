@@ -1,7 +1,8 @@
+<?php
 namespace App\Controller;
 
 use App\Entity\Request;
-use App\Form\RegistrationFormType;
+use App\SignUpForm\SignUpFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
 use Symfony\Component\HttpFoundation\Response;
@@ -9,11 +10,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SignUpController extends AbstractController
 {
-    #[Route('/register', name: 'registration')]
+    #[Route('/signup', name: 'registration')]
     public function signUp(HttpRequest $request): Response
     {
         $requestEntity = new Request();
-        $form = $this->createForm(RegistrationFormType::class, $requestEntity);
+        $form = $this->createForm(SignUpFormType::class, $requestEntity);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -22,7 +23,7 @@ class SignUpController extends AbstractController
             $entityManager->flush();
 
             // Redirect to registration landing page
-            return $this->redirectToRoute('landingpage');
+            //return $this->redirectToRoute('landingpage');
         }
 
         return $this->render('signup.html.twig', [
@@ -37,3 +38,4 @@ class SignUpController extends AbstractController
         return $this->render('registration/success.html.twig');
     }
 }
+
