@@ -1,0 +1,59 @@
+{% extends 'teacher/index.html.twig' %}
+
+{% block pageTitle %}
+<title>Teacher's Space</title>
+{% endblock %}
+
+{% block welcome %}
+    <p class="username-nav">Welcome, {{ teacher.firstname }} {{ teacher.lastname }}</p>
+{% endblock %}
+
+{% block verticalNav %}
+    {{ parent() }}
+{% endblock %}
+
+{% block restOfNavBar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block firstNavElement %}active{% endblock %}
+
+{% block secondNavElement %}{% endblock %}
+{% block thirdNavElement %}{% endblock %}
+
+
+{% block content %}
+    <!-- content of profile section  -->
+    <div class="container">
+        <div class="row">
+            <div class="row title">
+                <div class="col pfp">
+                    <img src="{{ asset('img/Admin_Teacher_Student/profile pic.png') }}" alt="Profile Pic" class="pfp" />
+                </div>
+                <div class="col-9 student-name-container">
+                    <h2 class="student-name">{{ teacher.firstname }} {{ teacher.lastname }}</h2>
+                </div>
+            </div>
+            <div class="card-container">
+                <div class="card">
+                    <div class="row info">
+                        <div class="col">
+                            <p>ID Number:</p>
+                            <p>Institutional Email: </p>
+                            <p>Phone:</p>
+                            <p>Gender:</p>
+                        </div>
+                        <div class="col-9">
+                            <p>{{ teacher.id }}</p>
+                            <p>{{ teacher.email }}</p>
+                            <p>{{ teacher.phone }}</p>
+                            <p>{{ teacher.gender }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of profile section -->
+{% endblock %}
+

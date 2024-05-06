@@ -3,9 +3,10 @@
 namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class TeacherFixtures extends Fixture
+class TeacherFixtures extends Fixture implements FixtureGroupInterface
 {
     private array $teachers = [
         [1, 'Hichem', 'Ben Ali', 'hichem.benali@example.com', 'pass123', 23456789, 'Male'],
@@ -45,5 +46,10 @@ class TeacherFixtures extends Fixture
     public function getTeachers(): array
     {
         return $this->teachers;
+    }
+
+    public static function getGroups(): array
+    {
+        return ['group1'];
     }
 }

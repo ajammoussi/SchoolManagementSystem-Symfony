@@ -85,4 +85,15 @@ class Course
 
         return $this;
     }
+
+    public function toArray()
+    {
+        return [
+            'id' => $this->getId(),
+            'coursename' => $this->getCoursename(),
+            'teacher' => $this->getTeacher(),
+            'field' => $this->getField(),
+            'studylevel' => $this->getStudylevel(),
+        ];
+    }
 }
