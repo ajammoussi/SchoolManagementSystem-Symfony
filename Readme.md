@@ -1,6 +1,6 @@
-run these scripts to load the database pls:
+run these scripts to load the database:
 
-symfony console doctrine:database:create  
+symfony console doctrine:database:create  (if the database doesn't exist yet)
 
 symfony console doctrine:migrations:execute 'DoctrineMigrations\Version20240506143517'
 
