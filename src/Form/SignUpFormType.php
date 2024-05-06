@@ -1,5 +1,5 @@
 <?php
-namespace App\SignUpForm;
+namespace App\Form;
 
 // SignUpFormType.php
 

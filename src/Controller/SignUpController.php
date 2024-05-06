@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Entity\Request;
-use App\SignUpForm\SignUpFormType;
+use App\Form\SignUpFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
 use Symfony\Component\HttpFoundation\Response;
