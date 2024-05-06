@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Course;
+use App\Entity\Schedule;
 use App\Entity\Student;
 use App\Entity\Teacher;
 use Doctrine\Persistence\ManagerRegistry;
@@ -17,6 +18,7 @@ class TeacherController extends AbstractController
     private $teacherRepository;
     private $studentRepository;
     private $courseRepository;
+    private $scheduleRepository;
 
     public function __construct(private ManagerRegistry $doctrine)
     {
@@ -24,6 +26,7 @@ class TeacherController extends AbstractController
         $this->teacherRepository = $doctrine->getRepository(Teacher::class);
         $this->studentRepository = $doctrine->getRepository(Student::class);
         $this->courseRepository = $doctrine->getRepository(Course::class);
+        $this->scheduleRepository = $doctrine->getRepository(Schedule::class);
     }
 
     #[Route('/dashboard/{id<\d+>}', name: 'app_dashboard_teacher')]
@@ -58,5 +61,25 @@ class TeacherController extends AbstractController
         }
         return $this->render('teacher/students.html.twig',
             ['teacher' => $teacher, 'students' => $students, 'courses' => $courses]);
+    }
+
+    #[Route('/schedule/{id<\d+>}', name: 'app_schedule_teacher')]
+    public function scheduleTeacher($id): Response
+    {
+        $teacher = $this->teacherRepository->findTeacherById($id);
+        $schedule = $this->scheduleRepository->findScheduleByTeacherId($id);
+        $schedule = array_map(function($schedule) {
+            return $schedule->toArray();
+        }, $schedule);
+        foreach($schedule as &$item_schedule) {
+            $item_schedule["course_id"] = ($item_schedule["course_id"])->getId();
+            $item_schedule["start_date"] = $item_schedule["start_date"]->format('Y-m-d');
+            $item_schedule["start_time"] = $item_schedule["start_time"]->format('H:i:s');
+            $item_schedule["end_time"] = $item_schedule["end_time"]->format('H:i:s');
+            $item_schedule["instructor_id"] = ($item_schedule["instructor_id"])->getId();
+            $item_schedule["expiry_date"] = $item_schedule["expiry_date"]->format('Y-m-d');
+        }
+        return $this->render('teacher/schedule.html.twig',
+            ['teacher' => $teacher, 'schedule' => $schedule]);
     }
 }

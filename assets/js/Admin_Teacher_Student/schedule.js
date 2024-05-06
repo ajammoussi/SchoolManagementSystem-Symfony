@@ -1,4 +1,3 @@
-let schedule = json_encode($Schedule);
 console.log(schedule);
 console.log(schedule[0]['day_of_week']);
 

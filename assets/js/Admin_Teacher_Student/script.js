@@ -25,8 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
             <table class="table">
                 <tbody>
                 <tr><th>ID</th><td>${student.id}</td></tr>
-                <tr><th>First Name</th><td>${student.firstname}</td></tr>
-                <tr><th>Last Name</th><td>${student.lastname}</td></tr>
+                <tr><th>First Name</th><td>${student.firstName}</td></tr>
+                <tr><th>Last Name</th><td>${student.lastName}</td></tr>
                 <tr><th>Email</th><td>${student.email}</td></tr>
                 <tr><th>Password</th><td>${student.password}</td></tr>
                 <tr><th>Phone</th><td>${student.phone}</td></tr>
@@ -50,8 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
             <table class="table">
                 <tbody>
                 <tr><th>ID</th><td>${teacher.id}</td></tr>
-                <tr><th>First Name</th><td>${teacher.firstname}</td></tr>
-                <tr><th>Last Name</th><td>${teacher.lastname}</td></tr>
+                <tr><th>First Name</th><td>${teacher.firstName}</td></tr>
+                <tr><th>Last Name</th><td>${teacher.lastName}</td></tr>
                 <tr><th>Email</th><td>${teacher.email}</td></tr>
                 <tr><th>Password</th><td>${teacher.password}</td></tr>
                 <tr><th>Phone</th><td>${teacher.phone}</td></tr>
@@ -69,8 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         `
                         <tr>
                             <td>${student.id}</td>
-                            <td>${student.firstname}</td>
-                            <td>${student.lastname}</td>
+                            <td>${student.firstName}</td>
+                            <td>${student.lastName}</td>
                             <td>${student.field}</td>
                             <td>${student.studylevel}</td>
                             `;
@@ -126,8 +126,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     `
             <tr>
                 <td>${teacher.id}</td>
-                <td>${teacher.firstname}</td>
-                <td>${teacher.lastname}</td>
+                <td>${teacher.firstName}</td>
+                <td>${teacher.lastName}</td>
                 <td>${teacher.phone}</td>
                 <td><button class="btn btn-primary showMore" id="showMore${teacher.id}" data-bs-toggle="modal" data-bs-target="#Modal">Show More</button></td>
             </tr>
@@ -232,7 +232,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // not good to use innerHTML can be a vulnirability !!!!
     // reminderr!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     if (pageTitle.innerText === "Students") {
-        console.log('hi');
         filteredElements=students;
         startingIndex = 0;
         endingIndex = 8;
