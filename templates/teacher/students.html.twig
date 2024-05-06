@@ -47,7 +47,7 @@
                         <h5 class="modal-title" id="exampleModalLabel">Mark Absence:</h5>
                     </div>
                     <div class="modal-body mark-absence">
-                        <form action="markAbsence.php" method="post">
+                        <form action="{{ path("app_mark_absence", {id: teacher.id}) }}" method="post">
                             <div class="form-group row">
                                 <label for="studentID" class="col-sm-2 col-form-label">Student ID:</label>
                                 <div class="col-sm-10">
@@ -92,6 +92,11 @@
                         <h2 class="student-name">My Students </h2>
                     </div>
                 </div>
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
                 <script>
                     const students = {{ students|json_encode|raw }};
                 </script>

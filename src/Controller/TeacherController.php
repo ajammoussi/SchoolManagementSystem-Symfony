@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Absence;
 use App\Entity\Course;
 use App\Entity\Schedule;
 use App\Entity\Student;
@@ -81,5 +82,26 @@ class TeacherController extends AbstractController
         }
         return $this->render('teacher/schedule.html.twig',
             ['teacher' => $teacher, 'schedule' => $schedule]);
+    }
+
+    #[Route('students/mark-absence/{id<\d+>}', name: 'app_mark_absence', methods: ['POST'])]
+    public function markAbsence($id): Response
+    {
+        $studentID = $_POST['studentID'];
+        $courseID = $_POST['courseID'];
+        $date = $_POST['absenceDate'];
+        $teacherID = $id;
+        $absence = new Absence();
+        $student = $this->studentRepository->find($studentID);
+        $absence->setStudent($student);
+        $course = $this->courseRepository->find($courseID);
+        $absence->setCourse($course);
+        $absenceDate = new \DateTime($date);
+        $absence->setAbsenceDate($absenceDate);
+        $this->manager->persist($absence);
+        $this->manager->flush();
+        // add a success flash
+        $this->addFlash('success', "Student of ID: $studentID was marked absent.");
+        return $this->redirectToRoute('app_students_teacher', ['id' => $teacherID]);
     }
 }
