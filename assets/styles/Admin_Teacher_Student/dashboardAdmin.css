@@ -1,0 +1,60 @@
+#genderCanvas {
+    width: 400px;
+    height: 400px;
+}
+
+.col-6 {
+    display: flex;
+    justify-content: center;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+.row.title {
+    justify-content: normal;
+}
+
+.row.elements{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.col-6.vertical {
+    flex-direction: column;
+}
+
+h5 {
+    text-align: center;
+}
+.container {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.studentsPerYearContainer {
+    width: 400px;
+    height: 300px;
+}
+
+.fieldContainer {
+    width: 400px;
+}
+
+.absenceContainer {
+    width: 700px;
+}
+
+.genderContainer {
+    width: 300px;
+}
+
+.teachersPerCourseContainer {
+    width: 300px;
+    height: 400px;
+}
+

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block styles %}
+    <link href="{{ asset('styles/Admin_Teacher_Student/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('styles/Admin_Teacher_Student/nav bar.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block pageTitle %}{% endblock %}
+
+{% block spaceTitle %}
+    <h3 class="page-title">Admin's Space</h3>
+{% endblock %}
+
+{% block verticalNav %}
+    {{ parent() }}
+{% endblock %}
+
+{% block firstNavElement %}{% endblock %}
+
+{% block profileLink %}{{ path("app_dashboard_admin", {id: admin.id}) }}{% endblock %}
+
+{% block restOfNavBar %}
+    
+    <li class="nav-item-vertical {% block secondNavElement %}{% endblock %}">
+        <b></b>
+        <b></b>
+        <a href="studentsListAdmin.php">
+            <!-- <img src="src/Profile.png" alt="Profile img " class="nav-vertical-icons"> -->
+            <span class="nav-text">Students</span>
+        </a>
+    </li>
+    <li class="nav-item-vertical {% block thirdNavElement %}{% endblock %}">
+        <b></b>
+        <b></b>
+        <a href="teachersListAdmin.php">
+            <!-- <img src="src/Profile.png" alt="Profile img " class="nav-vertical-icons"> -->
+            <span class="nav-text">Teachers</span>
+        </a>
+    </li>
+    <li class="nav-item-vertical {% block fourthNavElement %}{% endblock %} ">
+        <b></b>
+        <b></b>
+        <a href="absencesAdmin.php">
+            <!-- <img src="src/abscent white.png" alt="abscence img " class="nav-vertical-icons"> -->
+            <span class="nav-text">Absences</span>
+        </a>
+    </li>
+    <li class="nav-item-vertical {% block fifthNavElement %}{% endblock %}">
+        <b></b>
+        <b></b>
+        <a href="applicationsAdmin.php">
+            <!-- <img src="src/Profile.png" alt="Profile img " class="nav-vertical-icons"> -->
+            <span class="nav-text">Applications</span>
+        </a>
+    </li>
+{% endblock %}
+

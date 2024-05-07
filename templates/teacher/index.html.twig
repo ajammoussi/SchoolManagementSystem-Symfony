@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block styles %}
+    <link href="{{ asset('styles/Admin_Teacher_Student/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('styles/Admin_Teacher_Student/nav bar.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block pageTitle %}{% endblock %}
+
+{% block spaceTitle %}
+    <h3 class="page-title">Teacher's Space</h3>
+{% endblock %}
+
+{% block verticalNav %}
+    {{ parent() }}
+{% endblock %}
+
+{% block firstNavElement %}{% endblock %}
+
+{% block restOfNavBar %}
+    <li class="nav-item-vertical {% block secondNavElement %}{% endblock %}">
+        <b></b>
+        <b></b>
+        <a href="{{ path("app_schedule_teacher", {id: teacher.id}) }}">
+            <!-- <img src="src/Profile.png" alt="Profile img " class="nav-vertical-icons"> -->
+            <span class="nav-text">Schedule</span>
+        </a>
+    </li>
+
+    <li class="nav-item-vertical {% block thirdNavElement %}{% endblock %}">
+        <b></b>
+        <b></b>
+        <a href="{{ path("app_students_teacher", {id: teacher.id}) }}">
+            <!-- <img src="src/abscent white.png" alt="abscence img " class="nav-vertical-icons"> -->
+            <span class="nav-text">Students</span>
+        </a>
+    </li>
+{% endblock %}
+
