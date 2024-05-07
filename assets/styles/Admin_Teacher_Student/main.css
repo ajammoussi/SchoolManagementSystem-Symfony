@@ -1,0 +1,430 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&family=Roboto:wght@300;400;500;700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+}
+
+nav ul,
+nav ul li {
+  outline: 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  
+  
+  min-height: 100vh;
+  /* background-image: url(src/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover; */
+  background: #fff;
+}
+
+/* MAIN MENU */
+
+main {
+  display: grid;
+  grid-template-columns: 15% 85%;
+  margin: 100px 40px;
+  background: rgb(254, 254, 254);
+  box-shadow: 0 0.5px 0 1px rgba(255, 255, 255, 0.23) inset,
+    0 1px 0 0 rgba(255, 255, 255, 0.66) inset, 0 4px 16px rgba(0, 0, 0, 0.12);
+  border-radius: 15px;
+  z-index: 10;
+    align-content: center;
+}
+
+.main-menu {
+  /* overflow: hidden; */
+  min-height: 80vh;
+  background: darkred;
+  padding-top: 10px;
+  border-radius: 15px 0 0 15px;
+  font-family: "Roboto", sans-serif;
+}
+
+.main-menu h1 {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+  margin: 20px 0 30px;
+  color: #fff;
+  font-family: "Nunito", sans-serif;
+} 
+/* vertical nav start */
+.logo {
+  display: none;
+}
+
+.nav-item-vertical {
+  position: relative;
+  display: block;
+  
+}
+
+.nav-item-vertical a {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1rem;
+  padding: 15px 0;
+  margin-left: 10px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.nav-item-vertical b:nth-child(1) {
+  position: absolute;
+  top: -15px;
+  height: 15px;
+  width: 100%;
+  background: #fff;
+  display: none;
+}
+
+.nav-item-vertical b:nth-child(1)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-bottom-right-radius: 20px;
+  background: darkred;
+}
+
+.nav-item-vertical b:nth-child(2) {
+  position: absolute;
+  bottom: -15px;
+  height: 15px;
+  width: 100%;
+  background: #fff;
+  display: none;
+}
+
+.nav-item-vertical b:nth-child(2)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-top-right-radius: 20px;
+  background: darkred;
+}
+
+.nav-item-vertical.active b:nth-child(1),
+.nav-item-vertical.active b:nth-child(2) {
+  display: block;
+}
+
+.nav-item-vertical.active a {
+  text-decoration: none;
+  color: #000;
+  background: rgb(254, 254, 254);
+}
+
+
+
+.nav-text {
+  display: block;
+  width: 120px;
+  height: 20px;
+}
+
+.nav-vertical-icons{
+  width: 50px;
+  height: 50px;
+  margin: 0 8px 0 10px;
+}
+
+/* vertical nav end */
+
+
+
+/* user info */
+
+.container {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  margin-left: 0.5rem;
+}
+
+.card {
+  background-color: #fff;
+  margin: 0 10px;
+  padding: 5px 7px;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
+  margin-top: 30px;
+}
+
+.card-two {
+  display: block;
+}
+
+.card-user-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 5px;
+}
+
+.card-user-info img {
+  width: 25px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.card-user-info h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-left: 5px;
+}
+
+.card-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 7/4;
+  margin-bottom: 10px;
+  object-fit: cover;
+  border-radius: 10px;
+  object-position: 50% 30%;
+}
+
+.card p {
+  font-size: 0.9rem;
+  padding: 0 5px 5px;
+}
+
+
+
+.pfp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 5px;
+}
+
+.col > img {
+  width: 100px;
+  object-fit: cover;
+}
+
+.row .title {
+  margin-top: 20px;
+}
+
+.student-name-container {
+  display: flex;
+  align-items: center;
+}
+
+.student-name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-left: 5px;
+}
+
+.row .info {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.row .info .col {
+  font-weight: bold;
+}
+
+/* end of user info */
+
+/* admin info */
+
+
+/* make the submit button less wide*/
+.btn.btn-primary.submit{
+  width: 7rem;
+}
+
+.row.info.tbl {
+  margin-right: 20px;
+
+}
+
+.card.filter {
+  padding-bottom: 10px;
+  padding-top: 20px;
+  padding-right: 10px;
+}
+
+.row .info.filter {
+  margin:0px;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    justify-content: center;
+}
+.modal-body {
+  overflow: auto;
+}
+.modal-body td {
+  word-wrap: break-word;
+}
+.table td, .table th{
+  align-content: center;
+  text-align: center;
+}
+
+#cancel {
+  margin: 20px;
+}
+
+/* in applications */
+
+.app-from-text {
+  margin-top: 1rem;
+}
+
+button.btn.app-btn  {
+  height: 40px;
+}
+
+button.btn.show-app {
+  margin-top: 1.3rem;
+}
+
+div.container.shadow-sm.p-4.rounded.applic-content {
+  width: 95%;
+}
+
+
+  /* admin info end */
+
+
+/*      IN TEACHER PAGE        */
+
+
+/* Students of Teacher  */
+
+.mark-absence form {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  justify-content: center;
+}
+
+.mark-absence form .row {
+  margin: 10px;
+}
+
+label[for="studentID"], label[for="courseID"] {
+  white-space: nowrap;
+}
+
+.mark-absence .col-sm-10 {
+  padding-left: 30px;
+}
+
+
+  @media (max-width: 1100px) {
+    main {
+      grid-template-columns: 6% 94%;
+    }
+
+    .main-menu h1 {
+      display: none;
+    }
+
+    .logo {
+      display: block;
+      width: 30px;
+      margin: 20px auto;
+    }
+
+    .nav-text {
+      display: none;
+    }
+
+    .content {
+      grid-template-columns: 70% 30%;
+    }
+  }
+@media (max-width: 1100px) {
+  main {
+    grid-template-columns:  12% 88%;
+  }
+
+  .main-menu h1 {
+    display: none;
+  }
+
+  .logo {
+    display: block;
+    width: 30px;
+    margin: 20px auto;
+  }
+
+  .nav-text {
+    display: none;
+  }
+
+  
+}
+
+@media (max-width: 910px) {
+  main {
+    margin: 100px 0;
+    /* grid-template-columns:  15% 85%; */
+    
+  }
+  .nav-vertical-icons{
+    margin: 0 30px;
+  }
+  .nav-vertical-icons{
+    width: 40px;
+    height: 40px;
+    margin: 0 35px 0 5px;
+  }
+  
+  /* big brain moment here */
+  .nav-item-vertical a {
+    padding: 10px 10px 10px 30px;
+    margin-left: -40px;
+    min-width: 60px;
+  }
+
+}
+
+
+
+
+

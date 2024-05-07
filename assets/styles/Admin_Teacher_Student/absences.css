@@ -1,0 +1,39 @@
+ul,li{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.absences-list {
+    width: 60%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Style for the list headers */
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Style for list items */
+.abscence-item {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.absences-list-inner{
+    margin-top: 10;
+}
+
