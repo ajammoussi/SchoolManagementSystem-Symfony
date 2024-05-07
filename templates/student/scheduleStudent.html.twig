@@ -1,0 +1,40 @@
+{% extends 'student/index.html.twig' %}
+
+{% block pageTitle %}
+    <title>Student's Space</title>
+{% endblock %}
+
+{% block styles %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/Admin_Teacher_Student/schedule.css') }}">
+{% endblock %}
+
+{% block welcome %}
+    <p class="username-nav">Welcome, {{ student.firstName }} {{ student.lastName }}</p>
+{% endblock %}
+
+{% block verticalNav %}
+    {{ parent() }}
+{% endblock %}
+
+{% block restOfNavBar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block firstNavElement %}{% endblock %}
+
+{% block secondNavElement %}active{% endblock %}
+{% block thirdNavElement %}{% endblock %}
+{% block fourthNavElement %}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div id='calendar' class="calendar"></div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script> const schedule = {{ schedule|json_encode|raw }};</script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+    <script src="{{ asset('js/Admin_Teacher_Student/schedule.js') }}"></script>
+{% endblock %}
