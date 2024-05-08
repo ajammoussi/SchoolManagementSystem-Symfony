@@ -42,7 +42,7 @@
                 <div class="card-container">
                     <div class="card filter">
                         <div class="row info filter">
-                            <form action="absencesAdmin.php" method="post">
+                            <form action="{{ path("admin_absences", {id: admin.id}) }}" method="post">
                                 <div class="col">
                                     <p>Filter absences by:
                                         <span>
@@ -60,7 +60,7 @@
                                             <option value="default">--</option>
 
                                             {% for course in UniqueCourseNames %}
-                                                <option value='$course'>{{course}}</option>
+                                                <option value='{{course}}'>{{course}}</option>
                                             {% endfor %}
                                         </select>
                                     </p>

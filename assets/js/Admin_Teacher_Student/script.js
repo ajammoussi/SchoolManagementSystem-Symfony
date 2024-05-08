@@ -86,6 +86,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             )
             .join("");
+            if(arr.length<8){
+                loadMoreButton.setAttribute("hidden", "");
+            }
+            if(arr.length==0){
+                tableBody.innerHTML = "<tr><td colspan='5'>No teahcers found</td></tr>";
+            }
 
             // Add event listeners to the "Show More" buttons
             arr.forEach((student) => {
@@ -141,6 +147,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 showMoreInfoTeacher(teacher);
             });
         });
+        if(arr.length<8){
+            loadMoreButton.setAttribute("hidden", "");
+        }
+        if(arr.length==0){
+            tableBody.innerHTML = "<tr><td colspan='5'>No teahcers found</td></tr>";
+        }
     };
 
     const showAbsences = (arr = absences) => {
@@ -158,6 +170,12 @@ document.addEventListener("DOMContentLoaded", () => {
         `
             )
             .join("");
+            if(arr.length<8){
+                loadMoreButton.setAttribute("hidden", "");
+            }
+            if(arr.length==0){
+                tableBody.innerHTML = "<tr><td colspan='5'>No absences found</td></tr>";
+            }
     };
 
     const handleSingleFilterChange = (arr, filterSelect, filterFunction, showFunction) => {
@@ -176,7 +194,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const handleFilterChange = (arr, filterSelect, selectOne, selectTwo, filterOne, filterTwo, showFunction, filterFunctionOne, filterFunctionTwo) => {
         filterSelect.addEventListener("change", (choice) => {
             const selectedValue = filterSelect.value;
-
             // Hide all select menus
             selectOne.classList.add("hidden");
             selectTwo.classList.add("hidden");
@@ -280,6 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Use the eventListener for filterAbsencesSelect
         handleFilterChange(
+            
             absences,
             filterAbsencesSelect,
             courseSelect,
