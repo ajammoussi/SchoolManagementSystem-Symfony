@@ -5,9 +5,9 @@
     <title>{% block title %}Welcome!{% endblock %}</title>
 
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset ('node_modules/bootstrap/dist/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{ asset ('https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{ asset('styles/LandingPage/LandingPage.css') }}">
-        <link rel="stylesheet" href="{{ asset('node_modules/swiper/swiper-bundle.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css') }}">
         <link rel="stylesheet" href="{{ asset('styles/LandingPage/FieldsOfStudy.css') }}">
         <link rel="stylesheet" href="{{ asset('styles/LandingPage/footer.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
@@ -20,9 +20,8 @@
     <section class="landing-page" id="landing-page">
         <header>
             <div class="header-container">
-                {#chat gpt generated idk if home is the correct path #}<a href= "#"{# path('home') #} class="logo">
-                    {#chat gpt generated idk if it s the correct path #}           <img src="{{ asset('src/logo-insat.png') }}" alt="logo insat" class="logo-insat">
-                    INSAT <b>platform</b>
+                <a href= "{{ path("app_landingpage") }}" class="logo">
+                    <img src="{{ asset('img/LandingPage/logo-insat.png') }}" alt="logo insat" class="logo-insat">
                     INSAT <b>platform</b>
                 </a>
                 <ul class="links">
@@ -107,9 +106,17 @@
             </form>
         </div>
 
-        <div class="alert alert-danger" role="alert">
-            Your message has not been sent!
-        </div>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {% endfor %}
     </section>
 
     <!-- Footer -->
@@ -154,6 +161,7 @@
 {% block javascripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
     <script src="{{ asset('js/LandingPage/index.js') }}"></script>
 {% endblock %}
 </body>

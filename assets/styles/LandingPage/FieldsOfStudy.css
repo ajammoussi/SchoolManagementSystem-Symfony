@@ -160,32 +160,32 @@
 
 .swiper-slide--one {
   background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
-    url("../src/RT.jpg")
-      no-repeat 50% 50% / cover;
+  url("../../img/LandingPage/RT.jpg")
+  no-repeat 50% 50% / cover;
 }
 
 .swiper-slide--two {
   background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
-    url("../src/GL.jpg")
-      no-repeat 50% 50% / cover;
+  url("../../img/LandingPage/GL.jpg")
+  no-repeat 50% 50% / cover;
 }
 
 .swiper-slide--three {
   background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
-    url("../src/IAA.jpg")
-      no-repeat 50% 50% / cover;
+  url("../../img/LandingPage/IAA.jpg")
+  no-repeat 50% 50% / cover;
 }
 
 .swiper-slide--four {
   background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
-    url("../src/IMI.jpg")
-      no-repeat 50% 50% / cover;
+  url("../../img/LandingPage/IMI.jpg")
+  no-repeat 50% 50% / cover;
 }
 
 .swiper-slide--five {
   background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
-    url("https://images.unsplash.com/photo-1570481662006-a3a1374699e8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80")
-      no-repeat 50% 50% / cover;
+  url("https://images.unsplash.com/photo-1570481662006-a3a1374699e8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80")
+  no-repeat 50% 50% / cover;
 }
 
 .swiper-3d .swiper-slide-shadow-left,

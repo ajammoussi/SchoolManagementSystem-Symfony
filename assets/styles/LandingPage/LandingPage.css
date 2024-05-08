@@ -1,13 +1,13 @@
-/* Start Global Rules */
+
 * {
-    box-sizing: border-box;
-  }
-  html {
-    scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
 }
 body {
   font-family: 'Open Sans', sans-serif;
-  
+
   margin: 0;
 
 }
@@ -21,7 +21,7 @@ ul {
   margin: 0;
 }
 @keyframes fadeInFromLeft {
-  
+
   from {
     opacity: 0;
     transform: translateX(-20%);
@@ -30,10 +30,10 @@ ul {
     opacity: 1;
     transform: translateX(0);
   }
-  
+
 }
 @keyframes fadeInFromRight {
-  
+
   from {
     opacity: 0;
     transform: translateX(30%);
@@ -42,7 +42,7 @@ ul {
     opacity: 1;
     transform: translateX(0);
   }
-  
+
 }
 
 .header-container {
@@ -53,11 +53,11 @@ ul {
 }
 
 .landing-page{
-  background-image: url('../src/landing page background 4.jpg');
+  background: url("../../img/LandingPage/landing page background 4.jpg") no-repeat center;
   background-size: cover; /* Adjust to cover the entire element */
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Do not repeat the background image */
-  
+  /*background-position: center; !* Center the background image *!*/
+  /*background-repeat: no-repeat; !* Do not repeat the background image *!*/
+
 }
 /* Small */
 @media (min-width: 768px) {
@@ -200,7 +200,7 @@ ul {
   }
   .landing-page .header-content .header-info {
     text-align: center;
-    margin-bottom: 15px 
+    margin-bottom: 15px
   }
 
   .landing-page header .links li:nth-child(2){
@@ -210,8 +210,8 @@ ul {
     width: 70px;
     height: 45px;
     padding: 5px 4px;
-    
-    
+
+
   }
 
 }
@@ -220,7 +220,7 @@ ul {
   background: linear-gradient(to right,rgb(40, 40, 240), #00bcd4, #4caf50, #4caf50);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
-  background-clip: text; 
+  background-clip: text;
   font-size: 44px;
 }
 
@@ -235,25 +235,24 @@ ul {
 
 .landing-page .header-content .image img {
   max-width: 100%;
-  
+
 }
-  
+
 .landing-page header{
-    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
-    backdrop-filter: blur(10px); /* Apply blur effect to the background */
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+  backdrop-filter: blur(10px); /* Apply blur effect to the background */
 }
 .header-container .header-info {
-    background-color: rgba(255, 255, 255, 0.7); 
-    backdrop-filter: blur(10px); 
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 600px;
-    animation: fadeInFromLeft 1s ease-out;
-    
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  animation: fadeInFromLeft 1s ease-out;
+
 }
 .header-container .header-info p {
-    color: #FFF;
+  color: #FFF;
 }
 
     
-
