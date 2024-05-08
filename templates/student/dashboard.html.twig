@@ -1,0 +1,79 @@
+{% extends 'student/index.html.twig' %}
+
+{% block pageTitle %}
+    <title>Student's Space</title>
+{% endblock %}
+
+{% block welcome %}
+    <p class="username-nav">Welcome, {{ student.firstName }} {{ student.lastName }}</p>
+{% endblock %}
+
+{% block verticalNav %}
+    {{ parent() }}
+{% endblock %}
+
+{% block restOfNavBar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block firstNavElement %}active{% endblock %}
+
+{% block secondNavElement %}{% endblock %}
+{% block thirdNavElement %}{% endblock %}
+{% block fourthNavElement %}{% endblock %}
+
+
+{% block content %}
+    <!-- content of profile section  -->
+    <div class="container">
+        <div class="row">
+            <div class="row title">
+                <div class="col pfp">
+                    <img src="{{ asset('img/Admin_Teacher_Student/profile pic.png') }}" alt="Profile Pic" class="pfp" />
+                </div>
+                <div class="col-9 student-name-container">
+                    <h2 class="student-name">{{ student.firstName }} {{ student.lastName }}</h2>
+                </div>
+            </div>
+            <div class="card-container">
+                <div class="card">
+                    <div class="row info">
+                        <div class="col">
+                            <p>ID Number:</p>
+                            <p>Institutional Email: </p>
+                            <p>Field:</p>
+                            <p>Study Level:</p>
+                            <p>Class:</p>
+                        </div>
+                        <div class="col-9">
+                            <p>{{ student.id }}</p>
+                            <p>{{ student.email }}</p>
+                            <p>{{ student.field }}</p>
+                            <p>{{ student.studylevel }}</p>
+                            <p>{{ student.class }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-two">
+                    <div class="row info">
+                        <div class="col">
+                            <p>Birthdate: </p>
+                            <p>Address: </p>
+                            <p>Nationality: </p>
+                            <p>Gender: </p>
+                        </div>
+                        <div class="col-9">
+                            <!-- get the string of date and convert it to date object -->
+                            <p>{{ student.birthdate | date('Y-m-d')}}</p>
+                            <p>{{ student.address }}</p>
+                            <p>{{ student.nationality }}</p>
+                            <p>{{ student.gender }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of profile section -->
+{% endblock %}
+

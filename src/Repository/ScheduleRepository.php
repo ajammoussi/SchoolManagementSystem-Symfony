@@ -25,6 +25,17 @@ class ScheduleRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function findSchedulesByFieldAndLevel($field, $studylevel)
+    {
+        return $this->createQueryBuilder('s')
+            ->where('s.field = :field')
+            ->andWhere('s.studylevel = :studylevel')
+            ->setParameter('field', $field)
+            ->setParameter('studylevel', $studylevel)
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Schedule[] Returns an array of Schedule objects
 //     */
@@ -49,4 +60,5 @@ class ScheduleRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
 }

@@ -160,25 +160,25 @@
 
 .swiper-slide--one {
   background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
-    url("../src/RT.jpg")
+    url("../../img/LandingPage/RT.jpg")
       no-repeat 50% 50% / cover;
 }
 
 .swiper-slide--two {
   background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
-    url("../src/GL.jpg")
+    url("../../img/LandingPage/GL.jpg")
       no-repeat 50% 50% / cover;
 }
 
 .swiper-slide--three {
   background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
-    url("../src/IAA.jpg")
+    url("../../img/LandingPage/IAA.jpg")
       no-repeat 50% 50% / cover;
 }
 
 .swiper-slide--four {
   background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
-    url("../src/IMI.jpg")
+    url("../../img/LandingPage/IMI.jpg")
       no-repeat 50% 50% / cover;
 }
 

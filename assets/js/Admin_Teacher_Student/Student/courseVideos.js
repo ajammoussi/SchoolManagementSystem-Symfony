@@ -1,12 +1,20 @@
+const setVideoProgressCookie = (studentId, videoId, progress) => {
+    const cookieName = 'studentProgress_' + studentId + '_' + videoId;
+    document.cookie = cookieName + '=' + progress + '; expires=' + new Date(new Date().getTime() + (10*30 * 24 * 60 * 60 * 1000)).toUTCString() + '; path=/';
+};
 
-
-document.addEventListener('DOMContentLoaded', videoHandler());
-function changeVideo(videoUrl, videoTitle, videoDescription) {
-    var player = videojs('my-video');
-    console.log('Changing video to: ' + videoUrl);
-    player.src({ type: 'video/youtube', src: videoUrl });
-    player.play();
-    // Update title and description
-    document.getElementById('video-title').innerText = videoTitle;
-    document.getElementById('video-description').innerText = videoDescription;
-}
+const getVideoProgressCookie = (studentId, videoId) => {
+    const cookieName = 'studentProgress_' + studentId + '_' + videoId;
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i];
+        while (cookie.charAt(0) === ' ') {
+            cookie = cookie.substring(1);
+        }
+        if (cookie.indexOf(cookieName) === 0) {
+            return cookie.substring(cookieName.length + 1, cookie.length);
+        }
+    }
+    setVideoProgressCookie(studentId, videoId, 0)
+    return 0;
+};

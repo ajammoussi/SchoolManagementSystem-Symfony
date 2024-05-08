@@ -31,6 +31,17 @@ class StudentRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    public function findStudentById($id)
+    {
+        $qb = $this->createQueryBuilder('s');
+
+        $qb->where('s.id = :id')
+            ->setParameter('id', $id);
+
+        return $qb->getQuery()->getOneOrNullResult();
+
+    }
+
 //    /**
 //     * @return StudentFixtures[] Returns an array of StudentFixtures objects
 //     */
@@ -55,4 +66,5 @@ class StudentRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
 }
