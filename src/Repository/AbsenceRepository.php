@@ -5,7 +5,8 @@ namespace App\Repository;
 use App\Entity\Absence;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-
+use App\Entity\Course;
+use App\Entity\Student;
 /**
  * @extends ServiceEntityRepository<Absence>
  */
@@ -24,6 +25,21 @@ class AbsenceRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
 
     }
+    // public function getAdminAbsencesList(): array
+    // {
+    //     $qb = $this->createQueryBuilder('a');
+    //     $qb->select('a.student.id AS studentID, CONCAT(s.firstname, \' \', s.lastname) AS studentname, c.coursename, a.absencedate')
+    //         ->Join(Student::class, 's', 'WITH', 's.id = a.student.id')
+    //         ->Join(Course::class, 'c', 'WITH', 'c.id = a.course')
+    //         ->groupBy('a.absencedate');
+    //     return $qb->getQuery()->getResult();
+
+    // }
+    
+
+    
+    
+
 //    /**
 //     * @return Absence[] Returns an array of Absence objects
 //     */

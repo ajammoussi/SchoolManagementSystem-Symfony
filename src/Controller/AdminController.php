@@ -80,6 +80,30 @@ class AdminController extends AbstractController
                 'teachers' => $teachersList
             ]);
     }
+    #[Route('/absences/{id<\d+>}', name: 'admin_absences')]
+    public function absencesListAdmin(Admin $admin): Response
+    {   
+        $absencesList=$this->absenceRepository->findAll();
+        $UniqueCourseNames=$this->courseRepository->findUniqueCourseNames();
+        $absencesList=array_map(function($absence){
+            return $absence->toArray();
+        },$absencesList);
+        $absencesList=array_map(function($absence){
+            $temp=[ 'studentID'=> $absence["student"]["id"] ,
+                'studentname' => $absence["student"]["firstName"].' '.$absence["student"]["lastName"] ,
+                'coursename' => $absence["course"]["coursename"] ,
+                'absencedate' => $absence["absencedate"] 
+            ];
+            
+            return $temp  ;
+        },$absencesList);
+        return $this->render('admin/absencesList.html.twig',
+            [
+                'admin' => $admin , 
+                'absences' => $absencesList ,
+                'UniqueCourseNames' => $UniqueCourseNames
+            ]);
+    }
 
 
 
