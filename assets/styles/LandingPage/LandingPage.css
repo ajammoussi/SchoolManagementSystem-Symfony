@@ -1,4 +1,4 @@
-/* Start Global Rules */
+
 * {
     box-sizing: border-box;
   }
@@ -53,11 +53,11 @@ ul {
 }
 
 .landing-page{
-  background-image: url('../src/landing page background 4.jpg');
+  background: url("../../img/LandingPage/landingpagebackground4.jpg") no-repeat center;
   background-size: cover; /* Adjust to cover the entire element */
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Do not repeat the background image */
-  
+  /*background-position: center; !* Center the background image *!*/
+  /*background-repeat: no-repeat; !* Do not repeat the background image *!*/
+
 }
 /* Small */
 @media (min-width: 768px) {
