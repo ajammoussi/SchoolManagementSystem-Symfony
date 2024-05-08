@@ -13,6 +13,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+use function PHPSTORM_META\map;
+
 #[Route('/admin')]
 class AdminController extends AbstractController
 {
@@ -34,7 +36,7 @@ class AdminController extends AbstractController
         $this->absenceRepository = $doctrine->getRepository(Absence::class);
     }
 
-    #[Route('/dashboard/{id<\d+>}', name: 'app_dashboard_admin')]
+    #[Route('/dashboard/{id<\d+>}', name: 'admin_dashboard')]
     public function dashboard(Admin $admin): Response
     {   
         $studentsStatistics = $this->studentRepository->statsStudentsPerYear();
@@ -50,6 +52,32 @@ class AdminController extends AbstractController
                 'absencesStatistics' => $absencesStatistics ,
                 'fieldStatistics' => $fieldStatistics ,
                 'teachersStatistics' => $teachersStatistics
+            ]);
+    }
+    #[Route('/students/{id<\d+>}', name: 'admin_students')]
+    public function studentsListAdmin(Admin $admin): Response
+    {
+        $studentsList=$this->studentRepository->findAll();
+        $studentsList=array_map(function($student){
+            return $student->toArray();
+        },$studentsList);
+        return $this->render('admin/studentsList.html.twig',
+            [
+                'admin' => $admin , 
+                'students' => $studentsList
+            ]);
+    }
+    #[Route('/teachers/{id<\d+>}', name: 'admin_teachers')]
+    public function teachersListAdmin(Admin $admin): Response
+    {   
+        $teachersList=$this->teacherRepository->findAll();
+        $teachersList=array_map(function($teacher){
+            return $teacher->toArray();
+        },$teachersList);
+        return $this->render('admin/teachersList.html.twig',
+            [
+                'admin' => $admin , 
+                'teachers' => $teachersList
             ]);
     }
 

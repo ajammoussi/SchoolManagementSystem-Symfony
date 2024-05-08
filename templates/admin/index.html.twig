@@ -17,14 +17,14 @@
 
 {% block firstNavElement %}{% endblock %}
 
-{% block profileLink %}{{ path("app_dashboard_admin", {id: admin.id}) }}{% endblock %}
+{% block profileLink %}{{ path("admin_dashboard", {id: admin.id}) }}{% endblock %}
 
 {% block restOfNavBar %}
     
     <li class="nav-item-vertical {% block secondNavElement %}{% endblock %}">
         <b></b>
         <b></b>
-        <a href="studentsListAdmin.php">
+        <a href="{{ path("admin_students", {id: admin.id}) }}">
             <!-- <img src="src/Profile.png" alt="Profile img " class="nav-vertical-icons"> -->
             <span class="nav-text">Students</span>
         </a>
@@ -32,7 +32,7 @@
     <li class="nav-item-vertical {% block thirdNavElement %}{% endblock %}">
         <b></b>
         <b></b>
-        <a href="teachersListAdmin.php">
+        <a href="{{ path("admin_teachers", {id: admin.id}) }}">
             <!-- <img src="src/Profile.png" alt="Profile img " class="nav-vertical-icons"> -->
             <span class="nav-text">Teachers</span>
         </a>

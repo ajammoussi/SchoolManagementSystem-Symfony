@@ -50,8 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
             <table class="table">
                 <tbody>
                 <tr><th>ID</th><td>${teacher.id}</td></tr>
-                <tr><th>First Name</th><td>${teacher.firstName}</td></tr>
-                <tr><th>Last Name</th><td>${teacher.lastName}</td></tr>
+                <tr><th>First Name</th><td>${teacher.firstname}</td></tr>
+                <tr><th>Last Name</th><td>${teacher.lastname}</td></tr>
                 <tr><th>Email</th><td>${teacher.email}</td></tr>
                 <tr><th>Password</th><td>${teacher.password}</td></tr>
                 <tr><th>Phone</th><td>${teacher.phone}</td></tr>
@@ -126,10 +126,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     `
             <tr>
                 <td>${teacher.id}</td>
-                <td>${teacher.firstName}</td>
-                <td>${teacher.lastName}</td>
+                <td>${teacher.firstname}</td>
+                <td>${teacher.lastname}</td>
                 <td>${teacher.phone}</td>
-                <td><button class="btn btn-primary showMore" id="showMore${teacher.id}" data-bs-toggle="modal" data-bs-target="#Modal">Show More</button></td>
+                <td><button class="btn btn-primary showMore" id="showMore${teacher.id}" data-bs-toggle="modal" data-bs-target="#showMoreModal">Show More</button></td>
             </tr>
         `
             )
