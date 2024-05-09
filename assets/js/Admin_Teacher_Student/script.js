@@ -50,8 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
             <table class="table">
                 <tbody>
                 <tr><th>ID</th><td>${teacher.id}</td></tr>
-                <tr><th>First Name</th><td>${teacher.firstName}</td></tr>
-                <tr><th>Last Name</th><td>${teacher.lastName}</td></tr>
+                <tr><th>First Name</th><td>${teacher.firstname}</td></tr>
+                <tr><th>Last Name</th><td>${teacher.lastname}</td></tr>
                 <tr><th>Email</th><td>${teacher.email}</td></tr>
                 <tr><th>Password</th><td>${teacher.password}</td></tr>
                 <tr><th>Phone</th><td>${teacher.phone}</td></tr>
@@ -86,6 +86,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             )
             .join("");
+            if(arr.length<8){
+                loadMoreButton.setAttribute("hidden", "");
+            }
+            if(arr.length==0){
+                tableBody.innerHTML = "<tr><td colspan='5'>No teahcers found</td></tr>";
+            }
 
             // Add event listeners to the "Show More" buttons
             arr.forEach((student) => {
@@ -126,10 +132,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     `
             <tr>
                 <td>${teacher.id}</td>
-                <td>${teacher.firstName}</td>
-                <td>${teacher.lastName}</td>
+                <td>${teacher.firstname}</td>
+                <td>${teacher.lastname}</td>
                 <td>${teacher.phone}</td>
-                <td><button class="btn btn-primary showMore" id="showMore${teacher.id}" data-bs-toggle="modal" data-bs-target="#Modal">Show More</button></td>
+                <td><button class="btn btn-primary showMore" id="showMore${teacher.id}" data-bs-toggle="modal" data-bs-target="#showMoreModal">Show More</button></td>
             </tr>
         `
             )
@@ -141,6 +147,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 showMoreInfoTeacher(teacher);
             });
         });
+        if(arr.length<8){
+            loadMoreButton.setAttribute("hidden", "");
+        }
+        if(arr.length==0){
+            tableBody.innerHTML = "<tr><td colspan='5'>No teahcers found</td></tr>";
+        }
     };
 
     const showAbsences = (arr = absences) => {
@@ -158,6 +170,12 @@ document.addEventListener("DOMContentLoaded", () => {
         `
             )
             .join("");
+            if(arr.length<8){
+                loadMoreButton.setAttribute("hidden", "");
+            }
+            if(arr.length==0){
+                tableBody.innerHTML = "<tr><td colspan='5'>No absences found</td></tr>";
+            }
     };
 
     const handleSingleFilterChange = (arr, filterSelect, filterFunction, showFunction) => {
@@ -280,6 +298,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Use the eventListener for filterAbsencesSelect
         handleFilterChange(
+            
             absences,
             filterAbsencesSelect,
             courseSelect,

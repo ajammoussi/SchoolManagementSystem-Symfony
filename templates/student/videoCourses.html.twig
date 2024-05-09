@@ -8,9 +8,7 @@
     <link href="{{ asset('styles/Admin_Teacher_Student/videoCourses.css') }}" rel="stylesheet" />
 {% endblock %}
 
-{% block pageTitle %}
-    <title>Student's Space</title>
-{% endblock %}
+{% block pageTitle %}Student's Space{% endblock %}
 
 {% block welcome %}
     <p class="username-nav">Welcome, {{ student.firstName }} {{ student.lastName }}</p>
@@ -42,7 +40,12 @@
         <script>
             let currentID = {{ currentVideo.id }};
             let studentID = {{ student.id }};
+            
         </script>
+        <!-- Include Video.js JavaScript -->
+        <script src="https://vjs.zencdn.net/7.15.4/video.min.js"></script>
+        <!-- Include Video.js YouTube Plugin -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.6.0/Youtube.min.js"></script>
         <script src="{{ asset('js/Admin_Teacher_Student/Student/courseVideos.js') }}"></script>
         <!-- Video.js Player -->
         <div class="video-container">
@@ -72,14 +75,15 @@
             <h2>My Video Courses</h2>
             <ul class="list-group">
                 {% for course in courseVideos %}
-                    <li class="list-group-item listed-video" onclick="changeVideo({{ course.url }}, {{ course.title }}, {{ course.description }});currentID= {{ course.id }} ; ">
-                        <a href="#" data-video-id="{{ course.id }}" class="video-link"> {{ course.title }}
+                    <li class="list-group-item listed-video" onclick="changeVideo( '{{ course.url }}' , '{{ course.title }}' , '{{ course.description }}') ;currentID= {{ course.id }} ; ">
+                        <a href="#" data-video-id="{{course.id}}" class="video-link"> {{ course.title }}
                             <div class="progress" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
                                 <div class="progress-bar bg-success" id="{{ course.id }}" ></div> see original width
                             </div>
                         </a>
                     </li>
                     <script>
+                        console.log("hello"+{{ course.id }}+  {{ student.id }});
                         let progress{{ course.id }} = getVideoProgressCookie({{ student.id }}, {{ course.id }});
                         let progressBar{{ course.id }} = document.getElementById("{{ course.id }}");
                         progressBar{{ course.id }}.style.width = progress{{ course.id }} + "%";
@@ -92,9 +96,7 @@
 {% endblock %}
 
 {% block script %}
-    <!-- Include Video.js JavaScript -->
-    <script src="https://vjs.zencdn.net/7.15.4/video.min.js"></script>
-    <!-- Include Video.js YouTube Plugin -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.6.0/Youtube.min.js"></script>
+    
     <script src="{{ asset('js/Admin_Teacher_Student/Student/courseVideos-part2.js') }}"></script>
+
 {% endblock %}

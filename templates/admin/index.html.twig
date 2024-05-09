@@ -8,40 +8,49 @@
 {% block pageTitle %}{% endblock %}
 
 {% block spaceTitle %}
-    <h3 class="page-title">Student's Space</h3>
+    <h3 class="page-title">Admin's Space</h3>
 {% endblock %}
 
 {% block verticalNav %}
     {{ parent() }}
 {% endblock %}
-{% block profileLink %}{{ path("app_dashboard_student", {id: student.id}) }}{% endblock %}
-{% block restOfNavBar %}
-   
 
+{% block firstNavElement %}{% endblock %}
+
+{% block profileLink %}{{ path("admin_dashboard", {id: admin.id}) }}{% endblock %}
+
+{% block restOfNavBar %}
+    
     <li class="nav-item-vertical {% block secondNavElement %}{% endblock %}">
         <b></b>
         <b></b>
-        <a href="{{ path("app_schedule_student", {id: student.id}) }}">
+        <a href="{{ path("admin_students", {id: admin.id}) }}">
             <!-- <img src="src/Profile.png" alt="Profile img " class="nav-vertical-icons"> -->
-            <span class="nav-text">Schedule</span>
+            <span class="nav-text">Students</span>
         </a>
     </li>
-
     <li class="nav-item-vertical {% block thirdNavElement %}{% endblock %}">
         <b></b>
         <b></b>
-        <a href="{{ path("app_absences_student", {id: student.id}) }}">
+        <a href="{{ path("admin_teachers", {id: admin.id}) }}">
+            <!-- <img src="src/Profile.png" alt="Profile img " class="nav-vertical-icons"> -->
+            <span class="nav-text">Teachers</span>
+        </a>
+    </li>
+    <li class="nav-item-vertical {% block fourthNavElement %}{% endblock %} ">
+        <b></b>
+        <b></b>
+        <a href="{{ path("admin_absences", {id: admin.id}) }}">
             <!-- <img src="src/abscent white.png" alt="abscence img " class="nav-vertical-icons"> -->
             <span class="nav-text">Absences</span>
         </a>
     </li>
-
-    <li class="nav-item-vertical {% block fourthNavElement %}{% endblock %}">
+    <li class="nav-item-vertical {% block fifthNavElement %}{% endblock %}">
         <b></b>
         <b></b>
-        <a href="{{ path("app_courses_student", {id: student.id}) }}">
+        <a href="applicationsAdmin.php">
             <!-- <img src="src/Profile.png" alt="Profile img " class="nav-vertical-icons"> -->
-            <span class="nav-text">Courses</span>
+            <span class="nav-text">Applications</span>
         </a>
     </li>
 {% endblock %}

@@ -14,11 +14,7 @@ a{
   margin: 20px auto;
 }
 
-.container{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
-}
+
 .video-container{
     padding: 10px ;
     border-radius: 10px;
@@ -27,7 +23,7 @@ a{
     background-color: #dfdfdf;
     /* background: linear-gradient(rgb(31, 31, 31),rgb(31, 31, 31), rgb(62, 62, 62, 0.7)); */
 }
-.container{
+.vidcourse-special{
     margin: 0;
     padding: 0;
 }
@@ -104,4 +100,13 @@ a{
     color: black;
     background-color: lightgray;
     border-radius: 10px;
+}
+
+
+
+
+.vidcourse-special{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
 }

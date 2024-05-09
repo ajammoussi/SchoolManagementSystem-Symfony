@@ -41,6 +41,26 @@ class CourseRepository extends ServiceEntityRepository
 //            ->getResult()
 //        ;
 //    }
+    //teachersPerCourse:
+    public function teachersStatistics(): array
+    {
+        $qb = $this->createQueryBuilder('c');
+        $qb->select('c.coursename,count(c.teacher) AS nbTeachers')
+            ->groupBy('c.coursename');
+        return $qb->getQuery()->getResult();
+
+    }
+
+    public function findUniqueCourseNames(): array
+    {
+        $qb = $this->createQueryBuilder('c');
+        $qb->select('c.coursename')
+            ->distinct(true);
+        $result = $qb->getQuery()->getResult();
+
+        $uniqueCourses = array_column($result, 'coursename');
+        return array_values(array_unique($uniqueCourses));
+    }
 
 //    public function findOneBySomeField($value): ?Course
 //    {
