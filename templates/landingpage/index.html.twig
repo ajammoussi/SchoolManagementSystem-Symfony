@@ -87,7 +87,7 @@
     <section class="contact-form-section" id="contact-form-section">
         <div class="container-fluid mt-5" style="background-color: #26272b; color: #fff; padding: 20px;">
             <h1>Contact Us</h1>
-            <form action="{#  {{ path('send_email') }}#}" method="post">
+            <form action="{{ path('app_contact') }}" method="post">
                 <div class="mb-3">
                     <label for="name" class="form-label">Name:</label>
                     <input type="text" class="form-control" id="name" name="name" style="background-color: #33353d; color: #eceeef;" required>
@@ -101,7 +101,7 @@
                     <textarea class="form-control" id="message" name="message" rows="4" style="background-color: #33353d; color: #eceeef;" required></textarea>
                 </div>
                 <div class="text-end">
-                    <input type="submit" class="btn btn-primary" value="Submit">
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>
