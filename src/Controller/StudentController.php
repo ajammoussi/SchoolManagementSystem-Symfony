@@ -76,14 +76,14 @@ class StudentController extends AbstractController
     }
 
     #[Route('/courses/{id<\d+>}', name: 'app_courses_student')]
-    public function coursesOfStudent($id): Response
+    public function coursesOfStudent(Student $student): Response
     {
-        $student = $this->studentRepository->findStudentById($id);
         $courseVideos = $this->courseVideoRepository->findCourseVideosByFieldAndLevel($student->getField(), $student->getStudylevel());
         // Convert courses to array
         array_map(function($courseVideo) {
             return $courseVideo->toArray();
         }, $courseVideos);
+        // dd($courseVideos);
         return $this->render('student/videoCourses.html.twig',
             ['student' => $student, 'courseVideos' => $courseVideos]);
     }

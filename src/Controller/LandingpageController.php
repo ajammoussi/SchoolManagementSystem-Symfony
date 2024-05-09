@@ -9,7 +9,7 @@ use App\Form\ContactFormType;
 
 class LandingpageController extends AbstractController
 {
-    #[Route('/landingpage', name: 'app_landingpage')]
+    #[Route('/', name: 'app_landingpage')]
     public function index(): Response
     {
         $form = $this->createForm(ContactFormType::class);

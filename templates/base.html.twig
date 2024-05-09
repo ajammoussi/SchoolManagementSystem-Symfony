@@ -40,6 +40,13 @@
                 <h1 class="current-nav-element">Menu</h1>
                 <img class="logo" src="{{ asset('img/Admin_Teacher_Student/logo.png') }}" alt="logo" />
                 <ul>
+                    <li class="nav-item-vertical {% block firstNavElement %}{% endblock %}">
+                        <b></b>
+                        <b></b>
+                        <a href="{% block profileLink %}{{ path("app_dashboard_teacher", {id: teacher.id}) }}{% endblock %}">
+                            <span class="nav-text">Profile</span>
+                        </a>
+                    </li>
                 {% block restOfNavBar %}
 
                 {% endblock %}
@@ -48,7 +55,7 @@
                 </ul>
             </nav>
         {% endblock %}
-        <section class="content">
+        <section class="content vidcourse-special">
             {% block content %}
 
             {% endblock %}
