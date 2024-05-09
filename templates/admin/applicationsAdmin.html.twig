@@ -1,0 +1,90 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block pageTitle %}Applications{% endblock %}
+{% block styles %}
+    {{ parent()}}
+{% endblock %}
+{% block welcome %}
+    <p class="username-nav">Welcome, {{ admin.username }}</p>
+{% endblock %}
+{% block verticalNav %}
+    {{ parent() }}
+{% endblock %}
+
+{% block restOfNavBar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block firstNavElement %}{% endblock %}
+
+{% block secondNavElement %}{% endblock %}
+{% block thirdNavElement %}{% endblock %}
+{% block fourthNavElement %}{% endblock %}
+{% block fifthNavElement %}active{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="row title">
+                <div class="col-9 student-name-container">
+                    <h2 class="student-name">Applications </h2>
+                </div>
+            </div>
+
+            <div class="container shadow-sm p-4 rounded applic-content">
+                <div class="card-container">
+                    <ul class="list-group">
+                        {% if pdfFiles is empty %}
+                            <li class='list-group item d-flex justify-content-evenly align-items-center' style='border: none; border-radius: 5px; margin-bottom: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: box-shadow 0.3s ease-in-out;'>
+                                <div class="app-from-text app-btn"> <p>There are no applications yet</p></div>
+                            </li>
+                        {% else %}
+                            {% for file in pdfFiles %}
+
+                                if ($file != "." && $file != "..") { ?>
+                                {% if  %}
+                                <li class='list-group-item d-flex justify-content-evenly align-items-center' style='border: none; border-radius: 5px; margin-bottom: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: box-shadow 0.3s ease-in-out;'>
+                                    <div class="app-from-text app-btn"> <p>From: <?php for ($i=0; $i<10;$i++) echo "&nbsp;"?> <span style='color: #dc3545 !important;' class='text-decoration-none'><?=$file?></span> </p></div>
+                                    <div class='button-group d-flex'>
+                                        <button class="btn btn-danger app-btn show-app" type="submit" onclick="window.location.href = '../../admission/admission_pdf/<?=$file?>';">Show Application</button>
+                                        <form method='post'>
+                                            <input type='hidden' name='action' value='accept'>
+                                            <input type='hidden' name='fileName' value='<?=$file?>'>
+                                            <button type='submit' class='btn btn-danger app-btn'>Accept</button>
+                                        </form>
+                                        <form method='post'>
+                                            <input type='hidden' name='action' value='refuse'>
+                                            <input type='hidden' name='fileName' value='<?=$file?>'>
+                                            <button type='submit' class='btn btn-danger app-btn'>Refuse</button>
+                                        </form>
+                                    </div>
+                                </li>
+                            <?php }
+                                        }
+                                    %}
+
+                                    ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php
+                if (isset($_POST['action'])) {
+                    $action = $_POST['action'];
+                    $fileName = $_POST['fileName'];
+
+                    if ($action == 'accept') {
+                        ConnexionBD::addStudent_byemail($fileName);
+                        ConnexionBD::delete_submission($fileName);
+                        header("Location: applicationsAdmin.php"); // Refresh the current page
+                        exit;
+                    } elseif ($action == 'refuse') {
+                        ConnexionBD::delete_submission($fileName);
+                        header("Location: applicationsAdmin.php"); // Refresh the current page
+                        exit;
+                    }
+                }
+{% endblock %}
+

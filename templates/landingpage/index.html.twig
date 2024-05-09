@@ -34,6 +34,11 @@
                 </ul>
             </div>
         </header>
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
         <div class="header-content">
             <div class="header-container">
                 <div class="header-info">
@@ -44,7 +49,6 @@
             </div>
         </div>
     </section>
-
     <section class="fields-of-study" id="fieldsOfStudy">
         <div class="discover-fields-of-study">
             <span>discover</span>

@@ -2,20 +2,19 @@
 
 namespace App\Entity;
 
-/**
-* @ORM\Entity(repositoryClass="App\Repository\PdfFileRepository")
-*/
+use App\Repository\PdfFileRepository;
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity(repositoryClass: PdfFileRepository::class)]
 class PdfFile
 {
-    /**
-    * @ORM\Column(type="string", length=255, unique=true)
-    * @ORM\Id()
-    */
-    private $filename;
 
-    /**
-    * @ORM\Column(type="blob")
-    */
+    #[ORM\Id]
+    #[ORM\Column(type: 'string', length: 255, unique: true)]
+    private ?string $filename = null;
+
+    #[ORM\Column(type: 'blob')]
     private $content;
 
     public function getFilename(): ?string
@@ -23,22 +22,31 @@ class PdfFile
         return $this->filename;
     }
 
-    public function setFilename(string $filename): self
+    public function setFilename(string $filename): static
     {
         $this->filename = $filename;
 
-    return $this;
+        return $this;
     }
 
-    public function getContent(): ?string
+    public function getContent()
     {
-        return $this->content;
+        // Return content as a stream
+        return stream_get_contents($this->content);
     }
 
-    public function setContent(string $content): self
+    public function setContent($content): self
     {
-        $this->content = $content;
+        // If the passed content is a resource, use it directly
+        if (is_resource($content)) {
+            $this->content = $content;
+        } else {
+            // Else, create a stream from the string
+            $this->content = fopen('php://memory', 'r+');
+            fwrite($this->content, $content);
+            rewind($this->content);
+        }
 
-    return $this;
+        return $this;
     }
 }

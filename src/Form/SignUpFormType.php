@@ -3,6 +3,7 @@ namespace App\Form;
 
 // SignUpFormType.php
 
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -47,7 +48,7 @@ class SignUpFormType extends AbstractType
                 'label' => 'Email Address',
                 'attr' => ['class' => 'form-control']
             ])
-            ->add('phone', TextType::class, [
+            ->add('phone', NumberType::class, [
                 'label' => 'Phone Number',
                 'attr' => ['class' => 'form-control']
             ])

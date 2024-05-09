@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Absence;
 use App\Entity\Course;
+use App\Entity\PdfFile;
 use App\Entity\Schedule;
 use App\Entity\Student;
 use App\Entity\Teacher;
 use App\Entity\Admin;
+use App\Service\PdfGeneratorService;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -105,13 +107,23 @@ class AdminController extends AbstractController
             ]);
     }
 
+    #[Route('/applications/{id<\d+>}', name: 'admin_applications')]
+    public function index(Admin $admin, PdfGeneratorService $pdfGeneratorService): Response
+    {
+        $pdfGeneratorService->generateAndStorePdf();
 
+        $entityManager = $this->manager;
 
+        $pdfFilesRepository = $entityManager->getRepository(PdfFile::class);
 
+        $pdfFiles = $pdfFilesRepository->findAll();
+        dd($pdfFiles);
 
-
-
-
+        return $this->render('applicationsAdmin.html.twig', [
+            'admin' => $admin,
+            'pdfFiles' => $pdfFiles,
+        ]);
+    }
 
 
 
