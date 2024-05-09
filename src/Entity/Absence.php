@@ -9,20 +9,24 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: AbsenceRepository::class)]
 class Absence
 {
-
     #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
+
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?Student $student = null;
 
-    #[ORM\Id]
+
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?Course $course = null;
 
-    #[ORM\Id]
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $absencedate = null;
+
+
 
     public function getStudent(): ?Student
     {
@@ -56,6 +60,27 @@ class Absence
     public function setAbsencedate(\DateTimeInterface $absencedate): static
     {
         $this->absencedate = $absencedate;
+
+        return $this;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'student' => $this->getStudent()->toArray(),
+            'course' => $this->getCourse()->toArray(),
+            'absencedate' => $this->getAbsencedate() ? $this->getAbsencedate()->format('Y-m-d') : null
+        ];
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id): static
+    {
+        $this->id = $id;
 
         return $this;
     }

@@ -1,0 +1,100 @@
+{% extends 'student/index.html.twig' %}
+
+{% block styles %}
+    {{ parent() }}
+    <!-- video styling -->
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+    <link href="https://unpkg.com/@videojs/themes@1/dist/fantasy/index.css" rel="stylesheet" />
+    <link href="{{ asset('styles/Admin_Teacher_Student/videoCourses.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block pageTitle %}
+    <title>Student's Space</title>
+{% endblock %}
+
+{% block welcome %}
+    <p class="username-nav">Welcome, {{ student.firstName }} {{ student.lastName }}</p>
+{% endblock %}
+
+{% block verticalNav %}
+    {{ parent() }}
+{% endblock %}
+
+{% block restOfNavBar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block firstNavElement %}{% endblock %}
+
+{% block secondNavElement %}{% endblock %}
+{% block thirdNavElement %}{% endblock %}
+{% block fourthNavElement %}active{% endblock %}
+
+{% block content %}
+    {% if courseVideos is empty %}
+    <div class="row title">
+        <div class="col-9 student-name-container">
+            <h2 class="styled-text" style="margin-left: 3rem">There are no videos.</h2>
+        </div>
+    </div>
+    {% else %}
+        {% set currentVideo = courseVideos[0] %}
+        <script>
+            let currentID = {{ currentVideo.id }};
+            let studentID = {{ student.id }};
+        </script>
+        <script src="{{ asset('js/Admin_Teacher_Student/Student/courseVideos.js') }}"></script>
+        <!-- Video.js Player -->
+        <div class="video-container">
+            <div class="current-video">
+                <video
+                        id="my-video"
+                        class="video-js vjs-theme-fantasy"
+                        controls
+                        preload="auto"
+                        width="560"
+                        height="315"
+                        data-setup='{"techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{ currentVideo.url }}"}]}'
+                >
+                    <!-- Fallback content -->
+                    <p class="vjs-no-js">
+                        To view this video please enable JavaScript, and consider upgrading to a
+                        web browser that
+                        <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>.
+                    </p>
+                </video>
+            </div>
+            <h2 id="video-title">{{ currentVideo.title }}</h2>
+            <p id="video-description">{{ currentVideo.description }}</p>
+
+        </div>
+        <div>
+            <h2>My Video Courses</h2>
+            <ul class="list-group">
+                {% for course in courseVideos %}
+                    <li class="list-group-item listed-video" onclick="changeVideo({{ course.url }}, {{ course.title }}, {{ course.description }});currentID= {{ course.id }} ; ">
+                        <a href="#" data-video-id="{{ course.id }}" class="video-link"> {{ course.title }}
+                            <div class="progress" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar bg-success" id="{{ course.id }}" ></div> see original width
+                            </div>
+                        </a>
+                    </li>
+                    <script>
+                        let progress{{ course.id }} = getVideoProgressCookie({{ student.id }}, {{ course.id }});
+                        let progressBar{{ course.id }} = document.getElementById("{{ course.id }}");
+                        progressBar{{ course.id }}.style.width = progress{{ course.id }} + "%";
+                        progressBar{{ course.id }}.innerHTML = Math.round(progress{{ course.id }}) + "%";
+                    </script>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block script %}
+    <!-- Include Video.js JavaScript -->
+    <script src="https://vjs.zencdn.net/7.15.4/video.min.js"></script>
+    <!-- Include Video.js YouTube Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.6.0/Youtube.min.js"></script>
+    <script src="{{ asset('js/Admin_Teacher_Student/Student/courseVideos-part2.js') }}"></script>
+{% endblock %}

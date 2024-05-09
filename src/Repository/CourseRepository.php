@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Course;
+use App\Entity\Teacher;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -14,6 +15,16 @@ class CourseRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Course::class);
+    }
+
+    public function findCoursesByTeacherId(int $teacherId)
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        $qb->where('c.teacher = :teacherId')
+            ->setParameter('teacherId', $teacherId);
+
+        return $qb->getQuery()->getResult();
     }
 
 //    /**
@@ -40,4 +51,5 @@ class CourseRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
 }

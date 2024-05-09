@@ -1,0 +1,152 @@
+
+/* positionning nav bar elements */
+.container-nav {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    box-shadow: 0 0.5px 0 1px rgba(255, 255, 255, 0.23) inset,
+        0 1px 0 0 rgba(255, 255, 255, 0.66) inset, 0 4px 16px rgba(0, 0, 0, 0.12);
+    position: fixed;
+    border-radius: 10px;
+    top: 0;
+    z-index: 10;
+    background: #efefef;
+}
+
+.logo-uni-nav{
+    display: flex;
+    justify-content:start;
+    margin-left: 10px;
+    
+
+}
+.profile-nav{
+    display: flex;
+    justify-content:start;
+    margin-left: 10px;
+    margin-right: 10px;
+    align-items: center;
+}
+
+.nav-text {
+    font-family: "Nunito", sans-serif;
+}
+
+.current-nav-element {
+    font-weight: bold;
+}
+
+.page-title {
+    font-size: 1.7rem;
+    font-weight: 550;
+    margin: 10px 0 10px 15px;
+    text-align: center;
+}
+
+
+/* scale imges */
+.ucar> img {
+    height: 50px;
+    width : 130px;
+  }
+  
+.insat> img {
+    height: 50px;
+    width : 50px;
+    margin-left: 8px;
+}
+
+.username-nav{
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 1.1rem;
+    margin-right: 10px;
+}
+
+/* button styling */
+.btn {
+    display: block;
+    padding: 8px 24px;
+    margin: 10px auto;
+    font-size: 1rem;
+    font-weight: 500;
+    outline: none;
+    text-decoration: none;
+    color: #484b57;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    cursor: pointer;
+
+    transition: background 0.3s ease, color 0.3s ease;
+}
+.btn:hover {
+    background: darkred;
+    color: #fff;
+}
+
+.profile-pic-nav{
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+}
+
+
+/* hides the second button when on big screen */
+.mobile{
+    display: none;
+}
+
+
+/* switching to small screen */
+@media (max-width: 650px) {
+    .logo-uni-nav{
+      display: none;
+    }
+    .btn-deconnect{
+    display: none;
+
+    }
+    .container-nav{
+    justify-content: right;
+    }
+    .mobile{
+    display: block;
+
+    }
+    .btn.mobile{
+    padding: 4px 12px;
+
+
+    }
+
+
+}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+
+
+
+
+  

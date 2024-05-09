@@ -3,9 +3,10 @@
 namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class AdminFixtures extends Fixture
+class AdminFixtures extends Fixture implements FixtureGroupInterface
 {
     private array $admins = [
         [1, 'adminuser', 'admin@example.com', 'admin123']
@@ -23,5 +24,10 @@ class AdminFixtures extends Fixture
         }
 
         $manager->flush();
+    }
+
+    public static function getGroups(): array
+    {
+        return ['group1'];
     }
 }

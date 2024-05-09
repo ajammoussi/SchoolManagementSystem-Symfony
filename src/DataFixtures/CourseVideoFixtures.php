@@ -3,9 +3,10 @@
 namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class CourseVideoFixtures extends Fixture
+class CourseVideoFixtures extends Fixture implements FixtureGroupInterface
 {
     private array $courseVideos=[
         [1,'https://www.youtube.com/watch?v=-uleG_Vecis','Computer Science Concepts Explained','Learn the fundamentals of Computer Science with a quick breakdown of jargon that every software engineer should know. Over 100 technical concepts from the CS curriculum are explained to provide a foundation for programmers.','GL',2],
@@ -49,5 +50,10 @@ class CourseVideoFixtures extends Fixture
         }
 
         $manager->flush();
+    }
+
+    public static function getGroups(): array
+    {
+        return ['group1'];
     }
 }

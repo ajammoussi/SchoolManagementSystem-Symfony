@@ -16,6 +16,17 @@ class CourseVideoRepository extends ServiceEntityRepository
         parent::__construct($registry, CourseVideo::class);
     }
 
+    public function findCourseVideosByFieldAndLevel($field, $studylevel)
+    {
+        return $this->createQueryBuilder('cv')
+            ->where('cv.field = :field')
+            ->andWhere('cv.studylevel = :studylevel')
+            ->setParameter('field', $field)
+            ->setParameter('studylevel', $studylevel)
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return CourseVideo[] Returns an array of CourseVideo objects
 //     */
@@ -40,4 +51,5 @@ class CourseVideoRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
 }

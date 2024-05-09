@@ -1,0 +1,60 @@
+{% extends 'student/index.html.twig' %}
+
+{% block pageTitle %}
+    <title>Student's Space</title>
+{% endblock %}
+
+{% block styles %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/Admin_Teacher_Student/absences.css') }}">
+{% endblock %}
+
+{% block welcome %}
+    <p class="username-nav">Welcome, {{ student.firstName }} {{ student.lastName }}</p>
+{% endblock %}
+
+{% block verticalNav %}
+    {{ parent() }}
+{% endblock %}
+
+{% block restOfNavBar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block firstNavElement %}{% endblock %}
+
+{% block secondNavElement %}{% endblock %}
+{% block thirdNavElement %}active{% endblock %}
+{% block fourthNavElement %}{% endblock %}
+
+{% block content %}
+<!-- content of absence section  -->
+<div class="container">
+    <div class="row">
+        <div class="row title">
+            <div class="col-9 student-name-container">
+                <h2 class="student-name">Absences</h2>
+            </div>
+        </div>
+        <div class="absences-list">
+            <div class="container text-center list-header">
+                <div>Course</div>
+                <div>Number of Absences</div>
+            </div>
+            <hr>
+            <ul class="absences-list-inner">
+                {% for absence in absences %}
+                    <li >
+                        <ul class="abscence-item">
+                            <li>{{ absence.course }}</li>
+                            <li>{{ absence.absenceNumber }}</li>
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+    <!-- end of absence section -->
+{% endblock %}
+
