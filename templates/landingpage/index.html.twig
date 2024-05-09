@@ -88,6 +88,7 @@
         <div class="container-fluid mt-5" style="background-color: #26272b; color: #fff; padding: 20px;">
             <h1>Contact Us</h1>
             <form action="{{ path('contact') }}" method="post">
+                {{ form_row(form._token) }}
                 <div class="mb-3">
                     {{ form_row(form.name, { 'attr': {'class': 'form-control', 'style': 'background-color: #33353d; color: #eceeef;', 'required': true} }) }}
                 </div>

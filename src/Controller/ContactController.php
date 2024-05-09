@@ -35,7 +35,7 @@ class ContactController extends AbstractController
                 ->subject('New Contact Message')
                 ->html(
                     $this->renderView(
-                        'emails/contact_message.html.twig',
+                        'Email/contact_message.html.twig',
                         ['data' => $formData]
                     )
                 );
@@ -45,6 +45,12 @@ class ContactController extends AbstractController
             $this->addFlash('success', 'Your message has been sent successfully!');
 
             return $this->redirectToRoute('app_landingpage');
+        }
+
+        // If form is not valid, get the errors and display them
+        $errors = $form->getErrors(true, false);
+        foreach ($errors as $error) {
+            $this->addFlash('error', $error->getMessage());
         }
 
         return $this->render('landingpage/index.html.twig', [
