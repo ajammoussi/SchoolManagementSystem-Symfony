@@ -142,8 +142,8 @@ class AdminController extends AbstractController
     }
 
 
-    #[Route('/testestes/{id<\d+>}', name: 'admin_applications_pdf')]
-    public function testes(Admin $admin)
+    #[Route('/pdfFormat/{id<\d+>}', name: 'admin_applications_pdf')]
+    public function pdfGeneration(Admin $admin)
     {
         // Configure Dompdf according to your needs
         $pdfOptions = new Options();
@@ -170,7 +170,7 @@ class AdminController extends AbstractController
             }
 
             // Retrieve the HTML generated in our twig file
-            $html = $this->renderView('admin/testestes.html.twig', [
+            $html = $this->renderView('admin/pdfFormat.html.twig', [
                 'data' => $data
             ]);
 
@@ -197,7 +197,7 @@ class AdminController extends AbstractController
     #[Route('/applications/{id<\d+>}', name: 'admin_applications')]
     public function applicationsAdmin(Admin $admin, PdfGeneratorService $pdfGeneratorService): Response
     {
-        $this->testes($admin);
+        $this->pdfGeneration($admin);
 
         $requests = $this->requestRepository->findAll();
 

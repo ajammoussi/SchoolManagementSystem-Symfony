@@ -5,10 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78be0249-4db0-4749-820f-28c8dfe48da4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9d476efb-59ba-4ae3-982a-7281d031a746.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9d476efb-59ba-4ae3-982a-7281d031a746.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ApplicationsAdminController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/RequestRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/RequestRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Service/PdfGeneratorService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/PdfGeneratorService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/applicationsAdmin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/applicationsAdmin.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/testestes.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/applicationsadmin.html.twig" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,24 +192,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;jam-2&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/GL2/Semestre 2/Web/Ateliers/backup/SchoolManagementSystem-Symfony/templates/emails&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "jam-2",
+    "last_opened_file_path": "D:/GL2/Semestre 2/Web/Ateliers/TP PHP/SchoolManagementSystem",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\GL2\Semestre 2\Web\Ateliers\backup\SchoolManagementSystem-Symfony\templates\emails" />
@@ -234,6 +241,7 @@
       <workItem from="1715265874583" duration="1974000" />
       <workItem from="1715269107048" duration="15334000" />
       <workItem from="1715292676980" duration="17000" />
+      <workItem from="1715292980539" duration="14131000" />
     </task>
     <servers />
   </component>
