@@ -11,6 +11,8 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+
 
 #[Route('/teacher')]
 class TeacherController extends AbstractController
@@ -31,18 +33,22 @@ class TeacherController extends AbstractController
     }
 
     #[Route('/dashboard/{id<\d+>}', name: 'app_dashboard_teacher')]
-    public function dashboard($id): Response
+    public function dashboard(Teacher $teacher, AuthenticationUtils $authenticationUtils): Response
     {
-        $teacher = $this->teacherRepository->findTeacherById($id);
+        if($authenticationUtils->getLastUsername() != $teacher->getEmail()) {
+            return $this->redirectToRoute('app_login');
+        }
         return $this->render('teacher/dashboard.html.twig',
             ['teacher' => $teacher]);
     }
 
     #[Route('/students/{id<\d+>}', name: 'app_students_teacher')]
-    public function studentsOfTeacher($id): Response
+    public function studentsOfTeacher(Teacher $teacher, AuthenticationUtils $authenticationUtils): Response
     {
-        $teacher = $this->teacherRepository->findTeacherById($id);
-        $students = $this->studentRepository->findStudentsByTeacherId($id);
+        if($authenticationUtils->getLastUsername() != $teacher->getEmail()) {
+            return $this->redirectToRoute('app_login');
+        }
+        $students = $this->studentRepository->findStudentsByTeacherId($teacher->getId());
         // Convert students to array
         $students = array_map(function($student) {
             return $student[0]->toArray() + ["enrolledcourse" => $student["enrolledcourse"]];
@@ -51,7 +57,7 @@ class TeacherController extends AbstractController
         foreach ($students as &$student) {
             $student["birthdate"] = $student["birthdate"]->format('Y-m-d');
         }
-        $courses = $this->courseRepository->findCoursesByTeacherId($id);
+        $courses = $this->courseRepository->findCoursesByTeacherId($teacher->getId());
         // Convert courses to array
         $courses = array_map(function($course) {
             return $course->toArray();
@@ -65,10 +71,12 @@ class TeacherController extends AbstractController
     }
 
     #[Route('/schedule/{id<\d+>}', name: 'app_schedule_teacher')]
-    public function scheduleTeacher($id): Response
+    public function scheduleTeacher(Teacher $teacher, AuthenticationUtils $authenticationUtils): Response
     {
-        $teacher = $this->teacherRepository->findTeacherById($id);
-        $schedule = $this->scheduleRepository->findScheduleByTeacherId($id);
+        if($authenticationUtils->getLastUsername() != $teacher->getEmail()) {
+            return $this->redirectToRoute('app_login');
+        }
+        $schedule = $this->scheduleRepository->findScheduleByTeacherId($teacher->getId());
         $schedule = array_map(function($schedule) {
             return $schedule->toArray();
         }, $schedule);

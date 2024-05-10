@@ -12,6 +12,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 #[Route('/student')]
 class StudentController extends AbstractController
@@ -33,18 +34,22 @@ class StudentController extends AbstractController
         $this->courseVideoRepository = $doctrine->getRepository(CourseVideo::class);
     }
     #[Route('/dashboard/{id<\d+>}', name: 'app_dashboard_student')]
-    public function dashboard($id): Response
-    {
-        $student = $this->studentRepository->findStudentById($id);
+    public function dashboard(Student $student, AuthenticationUtils $authenticationUtils): Response
+    { 
+        if($authenticationUtils->getLastUsername() != $student->getEmail()) {
+            return $this->redirectToRoute('app_login');
+        }
         return $this->render('student/dashboard.html.twig',
             ['student' => $student]);
     }
 
     #[Route('/absences/{id<\d+>}', name: 'app_absences_student')]
-    public function absencesOfStudent($id): Response
+    public function absencesOfStudent(Student $student, AuthenticationUtils $authenticationUtils): Response
     {
-        $student = $this->studentRepository->findStudentById($id);
-        $absences = $this->absenceRepository->findAbsencesByStudentId($id);
+        if($authenticationUtils->getLastUsername() != $student->getEmail()) {
+            return $this->redirectToRoute('app_login');
+        }
+        $absences = $this->absenceRepository->findAbsencesByStudentId($student->getId());
         // Convert absences to array
         foreach ($absences as &$absence) {
             $course = ($absence['0'])->getCourse()->getCourseName();
@@ -56,9 +61,11 @@ class StudentController extends AbstractController
     }
 
     #[Route('/schedule/{id<\d+>}', name: 'app_schedule_student')]
-    public function scheduleOfStudent($id): Response
+    public function scheduleOfStudent(Student $student, AuthenticationUtils $authenticationUtils): Response
     {
-        $student = $this->studentRepository->findStudentById($id);
+        if($authenticationUtils->getLastUsername() != $student->getEmail()) {
+            return $this->redirectToRoute('app_login');
+        }
         $schedule = $this->scheduleRepository->findSchedulesByFieldAndLevel($student->getField(), $student->getStudylevel());
         $schedule = array_map(function($schedule) {
             return $schedule->toArray();
@@ -76,8 +83,11 @@ class StudentController extends AbstractController
     }
 
     #[Route('/courses/{id<\d+>}', name: 'app_courses_student')]
-    public function coursesOfStudent(Student $student): Response
+    public function coursesOfStudent(Student $student, AuthenticationUtils $authenticationUtils): Response
     {
+        if($authenticationUtils->getLastUsername() != $student->getEmail()) {
+            return $this->redirectToRoute('app_login');
+        }
         $courseVideos = $this->courseVideoRepository->findCourseVideosByFieldAndLevel($student->getField(), $student->getStudylevel());
         // Convert courses to array
         array_map(function($courseVideo) {
