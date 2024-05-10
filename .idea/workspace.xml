@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78be0249-4db0-4749-820f-28c8dfe48da4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="78be0249-4db0-4749-820f-28c8dfe48da4" name="Changes" comment="MERGE FROM JAM-2">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9d476efb-59ba-4ae3-982a-7281d031a746.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9d476efb-59ba-4ae3-982a-7281d031a746.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9d476efb-59ba-4ae3-982a-7281d031a746.xml.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9d476efb-59ba-4ae3-982a-7281d031a746/storage_v2/_src_/schema/insatplatform_symfony.cPpJDQ.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9d476efb-59ba-4ae3-982a-7281d031a746/storage_v2/_src_/schema/insatplatform_symfony.cPpJDQ.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20240509181843.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20240509181843.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/userFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/userFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Security/CUSTOMAUTHAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/CUSTOMAUTHAuthenticator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/landingpage/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/landingpage/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -248,5 +245,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="MERGE FROM JAM-2" />
+    <option name="LAST_COMMIT_MESSAGE" value="MERGE FROM JAM-2" />
   </component>
 </project>

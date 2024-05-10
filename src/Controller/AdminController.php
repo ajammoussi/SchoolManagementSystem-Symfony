@@ -9,6 +9,7 @@ use App\Entity\Schedule;
 use App\Entity\Student;
 use App\Entity\Teacher;
 use App\Entity\Admin;
+use App\Entity\User;
 use App\Repository\PdfFileRepository;
 use App\Service\PdfGeneratorService;
 use Doctrine\Persistence\ManagerRegistry;
@@ -19,10 +20,10 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
 use App\Entity\Request as RequestEntity;
-use Smalot\PdfParser\Parser;
 
 use function PHPSTORM_META\map;
 
@@ -38,8 +39,9 @@ class AdminController extends AbstractController
     private $absenceRepository;
     private $pdfFileRepository;
     private $requestRepository;
+    private UserPasswordHasherInterface $passwordHasher;
 
-    public function __construct(private ManagerRegistry $doctrine)
+    public function __construct(private ManagerRegistry $doctrine, UserPasswordHasherInterface $passwordHasher)
     {
         $this->manager = $doctrine->getManager();
         $this->teacherRepository = $doctrine->getRepository(Teacher::class);
@@ -49,6 +51,7 @@ class AdminController extends AbstractController
         $this->absenceRepository = $doctrine->getRepository(Absence::class);
         $this->pdfFileRepository = $doctrine->getRepository(PdfFile::class);
         $this->requestRepository = $doctrine->getRepository(RequestEntity::class);
+        $this->passwordHasher = $passwordHasher;
     }
 
     #[Route('/dashboard/{id<\d+>}', name: 'admin_dashboard')]
@@ -226,6 +229,7 @@ class AdminController extends AbstractController
         $fileName = $request->request->get('fileName');
         $pdfData = $this->requestRepository->findOneByEmail(substr($filename, 0, -4));
 
+
         if ($action === 'accept') {
             // Accept the submission
             $this->addFlash('success', 'The submission has been accepted');
@@ -247,6 +251,18 @@ class AdminController extends AbstractController
             $this->manager->persist($student);
 
             $this->manager->remove($pdfData);
+            $this->manager->flush();
+
+            $userObj = new User();
+            $userObj->setEmail($pdfData->getEmail());
+            $userObj->setRoles(['ROLE_STUDENT']);
+
+            //hash the password with the same algorithm symfony uses to compare
+            $hashedPassword = $this->passwordHasher->hashPassword($userObj, $student->getPassword());
+            $userObj->setPassword($hashedPassword);
+
+            $this->manager->persist($userObj);
+
             $this->manager->flush();
 
             $filePath = __DIR__ . '/../pdf/' . $fileName;

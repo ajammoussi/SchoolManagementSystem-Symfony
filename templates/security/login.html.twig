@@ -7,7 +7,9 @@
     <link href="{{ asset('css/signin.css') }}" rel="stylesheet">
 </head>
 <body>
-<img src="{{ asset('Landing Page/src/logo-insat.png') }}" alt="logo lfac" class="logo-fac">
+<a href= '{{ path('app_landingpage') }}' class="logo">
+    <img src="{{ asset('img/Admin_Teacher_Student/logo-insat.png') }}" alt="logo insat" class="logo-fac">
+</a>
 <h1>Good to see you again!</h1>
 
 
@@ -21,6 +23,7 @@
         <div class="mb-3">
             You are logged in as {{ app.user.userIdentifier}} {{app.user.roles|first}}, <a href="{{ path('app_logout') }}">Logout</a>
         </div>
+        <br>
     {% endif %}
 
     <fieldset>
