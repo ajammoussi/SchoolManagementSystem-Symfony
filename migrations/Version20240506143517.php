@@ -35,31 +35,10 @@ final class Version20240506143517 extends AbstractMigration
         $this->addSql('ALTER TABLE course ADD CONSTRAINT FK_169E6FB941807E1D FOREIGN KEY (teacher_id) REFERENCES teacher (id)');
         $this->addSql('ALTER TABLE schedule ADD CONSTRAINT FK_5A3811FB591CC992 FOREIGN KEY (course_id) REFERENCES course (id)');
         $this->addSql('ALTER TABLE schedule ADD CONSTRAINT FK_5A3811FB8C4FC193 FOREIGN KEY (instructor_id) REFERENCES teacher (id)');
-        // Create a view to store the user authentication details
-        $this->addSql('CREATE OR REPLACE VIEW user_auth AS 
-        SELECT 
-            id, 
-            email, 
-            password, 
-            "ROLE_STUDENT" AS type, 
-            CONCAT(firstname, " ", lastname) AS username 
-        FROM student 
-        UNION ALL 
-        SELECT 
-            id, 
-            email, 
-            password, 
-            "ROLE_TEACHER" AS type, 
-            CONCAT(firstname, " ", lastname) AS username 
-        FROM teacher insatplatform_symfony
-        UNION ALL 
-        SELECT 
-            id, 
-            email, 
-            password, 
-            "ROLE_ADMIN" AS type, 
-            username  # Use the existing username field
-        FROM admin');
+
+        $this->addSql('CREATE or replace TABLE pdf_file (filename VARCHAR(255) NOT NULL, content LONGBLOB NOT NULL, PRIMARY KEY(filename)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE or replace TABLE user (id INT AUTO_INCREMENT NOT NULL, email VARCHAR(180) NOT NULL, roles JSON NOT NULL COMMENT \'(DC2Type:json)\', password VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_IDENTIFIER_EMAIL (email), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+
     }
 
     public function down(Schema $schema): void
@@ -80,6 +59,7 @@ final class Version20240506143517 extends AbstractMigration
         $this->addSql('DROP TABLE teacher');
         $this->addSql('DROP TABLE pdf_file');
         $this->addSql('DROP TABLE messenger_messages');
-        $this->addSql('DROP VIEW user_auth');
+        $this->addSql('DROP TABLE pdf_file');
+        $this->addSql('DROP TABLE user');
     }
 }

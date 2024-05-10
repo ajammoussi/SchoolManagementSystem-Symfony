@@ -5,9 +5,17 @@ namespace App\DataFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class TeacherFixtures extends Fixture implements FixtureGroupInterface
 {
+    private UserPasswordHasherInterface $passwordHasher;
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    {
+        $this->passwordHasher = $passwordHasher;
+    }
+
     private array $teachers = [
         [1, 'Hichem', 'Ben Ali', 'hichem.benali@example.com', 'pass123', 23456789, 'Male'],
         [2, 'Noura', 'Chaabane', 'noura.chaabane@example.com', 'pass456', 34567890, 'Female'],
@@ -34,7 +42,9 @@ class TeacherFixtures extends Fixture implements FixtureGroupInterface
             $teacherObj->setFirstName($teacher[1]);
             $teacherObj->setLastName($teacher[2]);
             $teacherObj->setEmail($teacher[3]);
-            $teacherObj->setPassword($teacher[4]);
+            //hash the password with the same algorithm symfony uses to compare
+            $hashedPassword = $this->passwordHasher->hashPassword($teacherObj, $teacher[4]);
+            $teacherObj->setPassword($hashedPassword);
             $teacherObj->setPhone($teacher[5]);
             $teacherObj->setGender($teacher[6]);
             $manager->persist($teacherObj);
