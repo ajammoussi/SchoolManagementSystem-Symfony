@@ -5,9 +5,10 @@ namespace App\Entity;
 use App\Repository\StudentRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: StudentRepository::class)]
-class Student
+class Student implements UserInterface, \Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -223,5 +224,20 @@ class Student
             'studylevel' => $this->getStudylevel(),
             'class' => $this->getClass(),
         ];
+    }
+
+    public function getRoles(): array
+    {
+        return ['ROLE_STUDENT'];
+    }
+
+    public function eraseCredentials(): void
+    {
+
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return $this->email;
     }
 }

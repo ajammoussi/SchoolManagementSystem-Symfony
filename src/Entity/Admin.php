@@ -4,9 +4,10 @@ namespace App\Entity;
 
 use App\Repository\AdminRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: AdminRepository::class)]
-class Admin
+class Admin implements UserInterface, \Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -78,5 +79,20 @@ class Admin
             'email' => $this->email,
             'password' => $this->password
         ];
+    }
+
+    public function getRoles(): array
+    {
+        return ['ROLE_ADMIN'];
+    }
+
+    public function eraseCredentials(): void
+    {
+
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return $this->email;
     }
 }

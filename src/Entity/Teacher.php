@@ -4,9 +4,10 @@ namespace App\Entity;
 
 use App\Repository\TeacherRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: TeacherRepository::class)]
-class Teacher
+class Teacher implements UserInterface, \Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -126,5 +127,20 @@ class Teacher
             'phone' => $this->phone,
             'gender' => $this->gender
         ];
+    }
+
+    public function getRoles(): array
+    {
+        return ['ROLE_TEACHER'];
+    }
+
+    public function eraseCredentials(): void
+    {
+
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return $this->email;
     }
 }
