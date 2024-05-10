@@ -83,6 +83,7 @@
         </div>
     </section>
 
+    {#
     <!-- Contact Form Section -->
     <section class="contact-form-section" id="contact-form-section">
         <div class="container-fluid mt-5" style="background-color: #26272b; color: #fff; padding: 20px;">
@@ -118,6 +119,10 @@
             </div>
         {% endfor %}
     </section>
+    #}
+    {% block form %}
+        {{ form(form) }}
+        {%endblock %}
 
     <!-- Footer -->
     <footer class="site-footer" id="about-us">
