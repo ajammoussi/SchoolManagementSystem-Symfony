@@ -39,9 +39,6 @@ class Request
     private ?string $nationality = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $field = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $education = null;
 
     #[ORM\Column(length: 255)]
@@ -161,18 +158,6 @@ class Request
         return $this;
     }
 
-    public function getField(): ?string
-    {
-        return $this->field;
-    }
-
-    public function setField(string $field): static
-    {
-        $this->field = $field;
-
-        return $this;
-    }
-
     public function getEducation(): ?string
     {
         return $this->education;
@@ -233,7 +218,6 @@ class Request
             'birthdate' => $this->birthdate,
             'gender' => $this->gender,
             'nationality' => $this->nationality,
-            'field' => $this->field,
             'education' => $this->education,
             'program' => $this->program,
             'achievements' => $this->achievements,

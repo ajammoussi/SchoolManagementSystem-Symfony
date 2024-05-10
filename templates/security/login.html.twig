@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link href="{{ asset('css/signin.css') }}" rel="stylesheet">
+</head>
+<body>
+<a href= '{{ path('app_landingpage') }}' class="logo">
+    <img src="{{ asset('img/Admin_Teacher_Student/logo-insat.png') }}" alt="logo insat" class="logo-fac">
+</a>
+<h1>Good to see you again!</h1>
+
+
+{% block body %}
+<form id="msform" method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier}} {{app.user.roles|first}}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+        <br>
+    {% endif %}
+
+    <fieldset>
+        <h2 class="fs-title">Log in</h2>
+        <label for="email" class="form-label">Email</label>
+        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+        <label for="password" class="form-label">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    <input type="submit" name="next" class="next action-button" value="Sign in" />
+    </fieldset>
+</form>
+</body>
+</html>
+{% endblock %}

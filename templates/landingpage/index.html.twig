@@ -29,11 +29,16 @@
                     <li><a href="#landing-page">About Us</a></li>
                     <li><a href="#fieldsOfStudy">Fields of Study</a></li>
                     <li><a href="#contact-form-section">Contact us</a></li>
-                    <li><button class="nav-btn nav-btn-login" onclick="window.location.href = '{#  {{ path('login') }}#}';">Log in</button></li>
-                    <li><button class="nav-btn" onclick="window.location.href = '{#  {{ path('registration') }}#}';">Get Started</button></li>
+                    <li><button class="nav-btn nav-btn-login" onclick="window.location.href = '{{ path('app_login') }}';">Log in</button></li>
+                    <li><button class="nav-btn" onclick="window.location.href = '{{ path('registration') }}';">Get Started</button></li>
                 </ul>
             </div>
         </header>
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
         <div class="header-content">
             <div class="header-container">
                 <div class="header-info">
@@ -44,7 +49,6 @@
             </div>
         </div>
     </section>
-
     <section class="fields-of-study" id="fieldsOfStudy">
         <div class="discover-fields-of-study">
             <span>discover</span>
@@ -87,21 +91,19 @@
     <section class="contact-form-section" id="contact-form-section">
         <div class="container-fluid mt-5" style="background-color: #26272b; color: #fff; padding: 20px;">
             <h1>Contact Us</h1>
-            <form action="{#  {{ path('send_email') }}#}" method="post">
+            <form action="{{ path('contact') }}" method="post">
+                {{ form_row(form._token) }}
                 <div class="mb-3">
-                    <label for="name" class="form-label">Name:</label>
-                    <input type="text" class="form-control" id="name" name="name" style="background-color: #33353d; color: #eceeef;" required>
+                    {{ form_row(form.name, { 'attr': {'class': 'form-control', 'style': 'background-color: #33353d; color: #eceeef;', 'required': true} }) }}
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email:</label>
-                    <input type="email" class="form-control" id="email" name="email" style="background-color: #33353d; color: #eceeef;" required>
+                    {{ form_row(form.email, { 'attr': {'class': 'form-control', 'style': 'background-color: #33353d; color: #eceeef;', 'required': true} }) }}
                 </div>
                 <div class="mb-3">
-                    <label for="message" class="form-label">Message:</label>
-                    <textarea class="form-control" id="message" name="message" rows="4" style="background-color: #33353d; color: #eceeef;" required></textarea>
+                    {{ form_row(form.message, { 'attr': {'class': 'form-control', 'rows': 4, 'style': 'background-color: #33353d; color: #eceeef;', 'required': true} }) }}
                 </div>
                 <div class="text-end">
-                    <input type="submit" class="btn btn-primary" value="Submit">
+                    {{ form_row(form.submit, { 'attr': {'class': 'btn btn-primary'} }) }}
                 </div>
             </form>
         </div>
