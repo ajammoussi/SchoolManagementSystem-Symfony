@@ -5,19 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78be0249-4db0-4749-820f-28c8dfe48da4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/admin/applicationsAdmin.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/controllers.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/controllers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20240506143517.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20240506143517.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ApplicationsAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ApplicationsAdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SignUpController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SignUpController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/PdfFile.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Request.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Request.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/SignUpFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/SignUpFormType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Service/PdfGeneratorService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/PdfGeneratorService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/landingpage/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/landingpage/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/applicationsAdmin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/applicationsAdmin.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,24 +185,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "jam-2",
-    "last_opened_file_path": "D:/GL2/Semestre 2/Web/Ateliers/backup/SchoolManagementSystem-Symfony/templates/emails",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;jam-2&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/GL2/Semestre 2/Web/Ateliers/backup/SchoolManagementSystem-Symfony/templates/emails&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\GL2\Semestre 2\Web\Ateliers\backup\SchoolManagementSystem-Symfony\templates\emails" />
@@ -241,7 +232,8 @@
       <updated>1715248098724</updated>
       <workItem from="1715248100541" duration="8111000" />
       <workItem from="1715265874583" duration="1974000" />
-      <workItem from="1715269107048" duration="10937000" />
+      <workItem from="1715269107048" duration="15334000" />
+      <workItem from="1715292676980" duration="17000" />
     </task>
     <servers />
   </component>
