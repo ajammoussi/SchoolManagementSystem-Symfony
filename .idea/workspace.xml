@@ -5,19 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78be0249-4db0-4749-820f-28c8dfe48da4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/admin/applicationsAdmin.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/controllers.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/controllers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20240506143517.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20240506143517.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ApplicationsAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ApplicationsAdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SignUpController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SignUpController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/PdfFile.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Request.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Request.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/SignUpFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/SignUpFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/PdfGeneratorService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/PdfGeneratorService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/landingpage/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/landingpage/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9d476efb-59ba-4ae3-982a-7281d031a746.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20240509181843.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20240509181843.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +37,9 @@
     &quot;accountId&quot;: &quot;c17da941-2fb1-4a94-a338-63f0d5795e7a&quot;
   }
 }</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
@@ -196,8 +191,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "jam-2",
+    "git-widget-placeholder": "abid",
+    "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "D:/GL2/Semestre 2/Web/Ateliers/backup/SchoolManagementSystem-Symfony/templates/emails",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -226,8 +223,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-PS-241.14494.237" />
-        <option value="bundled-php-predefined-ba97393d7c68-8f0632a2a215-com.jetbrains.php.sharedIndexes-PS-241.14494.237" />
+        <option value="bundled-php-predefined-ba97393d7c68-6f8e3395a2b4-com.jetbrains.php.sharedIndexes-PS-233.14015.96" />
       </set>
     </attachedChunks>
   </component>
@@ -242,6 +238,7 @@
       <workItem from="1715248100541" duration="8111000" />
       <workItem from="1715265874583" duration="1974000" />
       <workItem from="1715269107048" duration="10937000" />
+      <workItem from="1715299090847" duration="1185000" />
     </task>
     <servers />
   </component>
