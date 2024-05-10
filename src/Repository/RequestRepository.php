@@ -40,4 +40,14 @@ class RequestRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    public function findOneByEmail(float|bool|int|string|null $fileName)
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.email = :val')
+            ->setParameter('val', $fileName)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
 }

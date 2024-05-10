@@ -21,26 +21,23 @@ class PdfGeneratorService
     public function generateAndStorePdf()
     {
         // Get the repository for the Request entity
-        $requestRepository = $this->entityManager->getRepository('App\Entity\Request');
+        $requestRepository = $this->entityManager->getRepository(Request::class);
 
         // Fetch all requests from the database
         $requests = $requestRepository->findAll();
 
-
         foreach ($requests as $request) {
-            $pdfFile = new PdfFile();
-            $pdfData = $this->createpdf($request);
-
-            $pdfFile->setFilename($pdfData['filename']);
-            $pdfFile->setContent($pdfData['content']);
-
-            $this->entityManager->persist($pdfFile);
+            // Generate the PDF and save it to the file system
+            $this->createpdf($request);
         }
-        $this->entityManager->flush();
     }
 
     private function createpdf($data)
     {
+        $data = $data->toArray();
+        $data['birthdate'] = $data['birthdate']->format('Y-m-d');
+        $filename = $data['email'] . '.pdf';
+
         $pdf = new FPDF();
         $pdf->AddPage();
 
@@ -66,14 +63,12 @@ class PdfGeneratorService
             $pdf->Cell(0, 10, $value, 0, 1);
         }
 
-
         ob_start();
         $pdf->Output('S');
         $pdfContent = ob_get_clean();
 
-        $data = $data->toArray();
-
-        $filename = $data['email'] . '.pdf';
+        // Save the PDF file in the 'src/pdf' directory
+        file_put_contents(__DIR__ . '/../pdf/' . $filename, $pdfContent);
 
         return ['filename' => $filename, 'content' => $pdfContent];
     }
