@@ -29,7 +29,7 @@
                 {% endblock %}
                 <img class="profile-pic-nav" src="{{ asset('img/Admin_Teacher_Student/profile pic.png') }}">
                 <button class="btn btn-deconnect" type="submit"
-                        onclick="window.location.href = '../../form/form.php';">Log Out</button>
+                        onclick="window.location.href = '{{ path("app_logout") }}';">Log Out</button>
             </div>
         </div>
     </nav>
