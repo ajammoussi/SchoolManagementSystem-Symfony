@@ -39,12 +39,18 @@ To run the School Management System locally, follow these steps:
    
     symfony console doctrine:fixtures:load --group=group4 --purge-exclusions=user_auth --append
     ```
-2. **Run the Server**: Start the server by running the command:
+
+2. **Install Dependencies**: Run the following command in your terminal to install the required dependencies using Composer:
+    ```bash
+    composer install 
+    ```
+   
+3. **Run the Server**: Start the server by running the command:
     ```bash
     symfony server:start 
     ```
 
-3. **Access the Platform**: Open a web browser and navigate to `localhost:8000` to use and test the platform.
+4. **Access the Platform**: Open a web browser and navigate to `localhost:8000` to use and test the platform.
 
 Demo Credentials
 ----------------
